@@ -235,7 +235,7 @@ public class MySqlMetadataHandler
 
     private String getTableNameQuery(String tableName)
     {
-        return String.format("SELECT table_name, lower(table_name) FROM information_schema.tables " + 
+        return String.format("SELECT table_name, lower(table_name) FROM information_schema.tables " +
         "WHERE table_name = '%s' or lower(table_name) = '%s' LIMIT 1", tableName, tableName);
     }
 

@@ -219,22 +219,11 @@ public abstract class JdbcMetadataHandler
     {
         try (Connection connection = jdbcConnectionFactory.getConnection(getCredentialProvider())) {
             Schema partitionSchema = getPartitionSchema(getTableRequest.getCatalogName());
-            Optional<Schema> schema = getSchema(connection, getTableRequest.getTableName(), partitionSchema);
-            if (schema.isPresent()) {
-                return new GetTableResponse(getTableRequest.getCatalogName(), getTableRequest.getTableName(), schema.get(),
+            TableName caseInsensitiveTableMatch = caseInsensitiveTableSearch(connection, getTableRequest.getTableName().getSchemaName(),
+                    getTableRequest.getTableName().getTableName());
+            Schema caseInsensitiveSchemaMatch = getSchema(connection, caseInsensitiveTableMatch, partitionSchema);
+            return new GetTableResponse(getTableRequest.getCatalogName(), caseInsensitiveTableMatch, caseInsensitiveSchemaMatch,
                         partitionSchema.getFields().stream().map(Field::getName).collect(Collectors.toSet()));
-            }
-            else {
-                LOGGER.info("Table {} not found.  Falling back to case insensitive search.", getTableRequest.getTableName());
-
-                TableName caseInsensitiveTableMatch = caseInsensitiveTableSearch(connection, getTableRequest.getTableName().getSchemaName(),
-                        getTableRequest.getTableName().getTableName());
-                Schema caseInsensitiveSchemaMatch = getSchema(connection, caseInsensitiveTableMatch, partitionSchema)
-                        .orElseThrow(() -> new RuntimeException(String.format("Could not find table %s", getTableRequest.getTableName())));
-
-                return new GetTableResponse(getTableRequest.getCatalogName(), caseInsensitiveTableMatch, caseInsensitiveSchemaMatch,
-                        partitionSchema.getFields().stream().map(Field::getName).collect(Collectors.toSet()));
-            }
         }
     }
 
@@ -257,7 +246,7 @@ public abstract class JdbcMetadataHandler
         return tables.get(0);
     }
 
-    private Optional<Schema> getSchema(Connection jdbcConnection, TableName tableName, Schema partitionSchema)
+    private Schema getSchema(Connection jdbcConnection, TableName tableName, Schema partitionSchema)
             throws Exception
     {
         SchemaBuilder schemaBuilder = SchemaBuilder.newBuilder();
@@ -292,13 +281,13 @@ public abstract class JdbcMetadataHandler
             }
 
             if (!found) {
-                return Optional.empty();
+                throw new RuntimeException(String.format("Could not find table %s in %s", tableName.getTableName(), tableName.getSchemaName()));
             }
 
             // add partition columns
             partitionSchema.getFields().forEach(schemaBuilder::addField);
 
-            return Optional.of(schemaBuilder.build());
+            return schemaBuilder.build();
         }
     }
 

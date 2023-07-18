@@ -53,6 +53,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.amazonaws.athena.connector.lambda.metadata.ListTablesRequest.UNLIMITED_PAGE_SIZE_VALUE;
@@ -71,6 +72,7 @@ public class JdbcMetadataHandlerTest
     private BlockAllocator blockAllocator;
     private AWSSecretsManager secretsManager;
     private AmazonAthena athena;
+    private ResultSet resultSetName;
 
     @Before
     public void setup()
@@ -106,6 +108,10 @@ public class JdbcMetadataHandlerTest
         };
         this.federatedIdentity = Mockito.mock(FederatedIdentity.class);
         this.blockAllocator = Mockito.mock(BlockAllocator.class);
+        String[] columnNames = new String[] {"TABLE_SCHEM", "TABLE_NAME"};
+        String[][] tableNameValues = new String[][]{new String[] {"testSchema", "testTable"}};
+        this.resultSetName = mockResultSet(columnNames, tableNameValues, new AtomicInteger(-1));
+        Mockito.when(this.connection.getMetaData().getTables(Mockito.eq(connection.getCatalog()), any(), Mockito.eq(null), Mockito.eq(new String[] {"TABLE", "VIEW", "EXTERNAL TABLE"}))).thenReturn(this.resultSetName);
     }
 
     @Test
