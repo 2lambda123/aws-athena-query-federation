@@ -74,7 +74,7 @@ public class CloudFormationClient
      * instance, Lambda function, etc...). Once the stack is created successfully, the lambda function is registered
      * with Athena.
      */
-    public void createStack()
+    public void createStack() throws Exception
     {
         logger.info("------------------------------------------------------");
         logger.info("Create CloudFormation stack: {}", stackName);
