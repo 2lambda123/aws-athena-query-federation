@@ -115,7 +115,7 @@ EOM
 fi
 
 set -e
-mvn clean install -Dpublishing=true
+mvn clean package
 
 # 8. Packages the connector using SAM to create a deployable CloudFormation template
 # 9. Publishes the connector using SAM
