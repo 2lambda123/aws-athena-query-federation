@@ -107,6 +107,8 @@ public class CloudFormationClient
 
         // Poll status of stack until stack has been created or creation has failed
         while (true) {
+                .withDisableRollback(true)
+                .withCapabilities(Capability.CAPABILITY_NAMED_IAM);
             describeStackEventsResult = cloudFormationClient.describeStackEvents(describeStackEventsRequest);
             StackEvent event = describeStackEventsResult.getStackEvents().get(0);
             String resourceId = event.getLogicalResourceId();
@@ -127,6 +129,8 @@ public class CloudFormationClient
             }
             break;
         }
+                .withDisableRollback(true)
+                .withCapabilities(Capability.CAPABILITY_NAMED_IAM);
     }
 
     /**
