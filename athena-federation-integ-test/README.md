@@ -1,5 +1,9 @@
 # Integration-Test Framework
+The `Integration-Test` framework includes end-to-end testing capabilities and uses the `mvn failsafe:integration-test` command to run the integration tests.
 
+**Note**: It is important to run `mvn clean install` in the `athena-federation-integ-test` directory to avoid compilation errors.
+
+The CloudFormationClient.java file is responsible for creating the CloudFormation stack.
 The Integration-Test framework provides end-to-end testing capabilities, and is available
 to all lambda connectors developed using the Athena Federation SDK.
 
