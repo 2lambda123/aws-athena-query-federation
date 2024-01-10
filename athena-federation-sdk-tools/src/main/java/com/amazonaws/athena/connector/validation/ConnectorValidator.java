@@ -69,7 +69,7 @@ import static java.util.Objects.requireNonNull;
  * This tool can also be run using the validate_connector.sh script in the tools directory under the package root:
  * tools/validate_connector.sh [args]
  */
-public class ConnectorValidator
+public class ConnectorValidator implements AutoCloseable
 {
   private static final Logger log = LoggerFactory.getLogger(ConnectorValidator.class);
 
@@ -77,7 +77,7 @@ public class ConnectorValidator
 
   static final BlockAllocator BLOCK_ALLOCATOR = new BlockAllocatorImpl();
 
-  private ConnectorValidator()
+  public ConnectorValidator()
   {
     // Intentionally left blank.
   }
