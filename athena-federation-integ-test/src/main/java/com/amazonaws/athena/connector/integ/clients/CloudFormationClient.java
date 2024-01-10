@@ -54,12 +54,12 @@ public class CloudFormationClient
     private final String stackTemplate;
     private final AmazonCloudFormation cloudFormationClient;
 
-    public CloudFormationClient(Pair<App, Stack> stackPair)
+    public CloudFormationClient(Pair<Stack, App> stackPair)
     {
         this(stackPair.first(), stackPair.second());
     }
 
-    public CloudFormationClient(App theApp, Stack theStack)
+    public CloudFormationClient(Stack theStack, App theApp)
     {
         stackName = theStack.getStackName();
         ObjectMapper objectMapper = new ObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true);
@@ -95,7 +95,7 @@ public class CloudFormationClient
      * @throws RuntimeException The CloudFormation stack creation failed.
      */
     private void processCreateStackRequest(CreateStackRequest createStackRequest)
-            throws RuntimeException
+            throws Exception
     {
         // Create CloudFormation stack.
         CreateStackResult result = cloudFormationClient.createStack(createStackRequest);
