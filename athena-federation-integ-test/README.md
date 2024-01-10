@@ -118,9 +118,9 @@ integration tests:
   "secrets_manager_secret" : "redshift-integ1",
   "environment_vars" : {
     "spill_bucket" : "athena-results",
-    "spill_prefix" : "athena-spill",
-    "disable_spill_encryption" : "false",
-    "spill_put_request_headers": ""
+    "spill_prefix" : "new-athena-spill",
+    "disable_spill_encryption" : "true",
+    "spill_put_request_headers": "{\"x-amz-server-side-encryption\" : \"AES256\"}"
   },
   "vpc_configuration" : {
     "vpc_id": "vpc-569cdc2c",
