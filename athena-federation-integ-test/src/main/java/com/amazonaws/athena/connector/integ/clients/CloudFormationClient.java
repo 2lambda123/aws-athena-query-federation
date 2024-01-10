@@ -123,7 +123,7 @@ public class CloudFormationClient
                 }
             }
             else if (resourceStatus.equals(CF_CREATE_RESOURCE_FAILED_STATUS)) {
-                throw new RuntimeException(getCloudFormationErrorReasons(describeStackEventsResult.getStackEvents()));
+                throw new RuntimeException(getCloudFormationErrorReasons(describeStackEventsResult.getStackEvents()) + "\n Stack Events: " + describeStackEventsResult.getStackEvents());
             }
             break;
         }
