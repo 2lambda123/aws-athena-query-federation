@@ -42,7 +42,7 @@ import java.util.List;
  * Responsible for creating the CloudFormation stack needed to test the connector, and unwinding it once testing is
  * done.
  */
-public class CloudFormationClient
+private class CloudFormationClient
 {
     private static final Logger logger = LoggerFactory.getLogger(CloudFormationClient.class);
 
