@@ -54,7 +54,7 @@ class (`IntegrationTestBase`):
 ```java
 import org.testng.annotations.Test;
 
-public class RedshiftIntegTest extends IntegrationTestBase
+public class RedshiftIntegTest extends IntegrationTestBase implements RedshiftIntegTestITF
 {
     @Test
     public void exampleIntegTest()
@@ -71,14 +71,18 @@ Provide implementation for the following 4 abstract methods in the test class:
     /**
      * Must be overridden in the extending class to setup the DB table (i.e. insert rows into table, etc...)
      */
-    protected abstract void setUpTableData();
+    protected abstract void setUpTableData(){
+    // Implement the logic to set up the DB table by inserting rows into the table.
+}
 
     /**
      * Must be overridden in the extending class (can be a no-op) to create a connector-specific CloudFormation stack
      * resource (e.g. DB table) using AWS CDK.
      * @param stack The current CloudFormation stack.
      */
-    protected abstract void setUpStackData(final Stack stack);
+    protected abstract void setUpStackData(final Stack stack){
+    // Implement the logic to create a connector-specific CloudFormation stack resource using AWS CDK.
+}
 
     /**
      * Must be overridden in the extending class (can be a no-op) to set the lambda function's environment variables
@@ -86,14 +90,20 @@ Provide implementation for the following 4 abstract methods in the test class:
      * expected environment variables. This method is intended to supplement the test-config.json file environment_vars
      * attribute (see below) for cases where the environment variable cannot be hardcoded.
      */
-    protected abstract void setConnectorEnvironmentVars(final Map<String, String> environmentVars);
+    protected abstract void setConnectorEnvironmentVars(final Map<String, String> environmentVars){
+    // Implement the logic to set the lambda function's environment variables.
+    return Optional.empty();
+}
 
     /**
      * Must be overridden in the extending class to get the lambda function's IAM access policy. The latter sets up
      * access to multiple connector-specific AWS services (e.g. DynamoDB, Elasticsearch etc...)
      * @return A policy document object.
      */
-    protected abstract Optional<PolicyDocument> getConnectorAccessPolicy();
+    protected abstract Optional<PolicyDocument> getConnectorAccessPolicy(){
+    // Implement the logic to get the lambda function's IAM access policy.
+    return Optional.empty();
+}
 ```
 
 ### Test Configuration
