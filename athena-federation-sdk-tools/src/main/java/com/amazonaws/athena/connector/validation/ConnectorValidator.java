@@ -64,7 +64,7 @@ import static java.util.Objects.requireNonNull;
  * broader and sometimes more subtle logical issues can be discovered before being used through Athena.
  * <p>
  * To run this tool using Maven, execute the following command:
- * mvn exec:java -Dexec.mainClass=com.amazonaws.athena.connector.validation.ConnectorValidator -Dexec.args="[--lambda-func lambda_func [--record-func record_func] [--catalog catalog] [--schema schema [--table table [--constraints constraints]]] [--planning-only] [--help]]"
+ * mvn exec:java -Dexec.mainClass=com.amazonaws.athena.connector.validation.AthenaConnectorValidator -Dexec.args="[--lambda-func lambda_func [--record-func record_func] [--catalog catalog] [--schema schema [--table table [--constraints constraints]]] [--planning-only] [--help]]"
  * <p>
  * This tool can also be run using the validate_connector.sh script in the tools directory under the package root:
  * tools/validate_connector.sh [args]
