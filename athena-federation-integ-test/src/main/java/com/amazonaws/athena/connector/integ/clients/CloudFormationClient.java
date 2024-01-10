@@ -79,7 +79,7 @@ public class CloudFormationClient
         logger.info("------------------------------------------------------");
         logger.info("Create CloudFormation stack: {}", stackName);
         logger.info("------------------------------------------------------");
-        // logger.info(stackTemplate);
+        logger.info(stackTemplate);
 
         CreateStackRequest createStackRequest = new CreateStackRequest()
                 .withStackName(stackName)
