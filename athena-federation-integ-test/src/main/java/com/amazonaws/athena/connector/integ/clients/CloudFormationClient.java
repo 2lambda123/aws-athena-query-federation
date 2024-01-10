@@ -59,6 +59,8 @@ public class CloudFormationClient
         this(stackPair.first(), stackPair.second());
     }
 
+    // Reference README.md for integration test instructions.
+    private final String README_REFERENCE = "Please refer to the README.md file for instructions on running integration tests.";
     public CloudFormationClient(App theApp, Stack theStack)
     {
         stackName = theStack.getStackName();
@@ -150,6 +152,9 @@ public class CloudFormationClient
         return errorMessageBuilder.toString();
     }
 
+    /**
+     * Deletes a CloudFormation stack, and the lambda function registered with Athena.
+     */
     /**
      * Deletes a CloudFormation stack, and the lambda function registered with Athena.
      */
