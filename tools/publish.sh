@@ -39,7 +39,7 @@ if [ "$#" -lt 2 ]; then
     echo "\n1. S3_BUCKET used for publishing artifacts to Lambda/Serverless App Repo.\n"
     echo "\n2. The connector module to publish (e.g. athena-exmaple or athena-cloudwatch) \n"
     echo "\n3. The AWS REGION to target (e.g. us-east-1 or us-east-2) \n"
-    echo "\n\n USAGE from the module's directory: ../tools/publish.sh my_s3_bucket athena-example \n"
+    echo "\n\n USAGE:\n  From the module's directory, run the publish script as follows:\n  ../tools/publish.sh <S3_BUCKET> <CONNECTOR_MODULE> <AWS_REGION> \n"
     exit;
 fi
 
@@ -104,7 +104,7 @@ if ! aws s3api get-bucket-policy --bucket $1 --region $REGION| grep 'Statement' 
 }
 EOM
                 cat sar_bucket_policy.json
-                set -e
+                set -e -x
                 aws s3api put-bucket-policy --bucket $1 --region $REGION --policy  file://sar_bucket_policy.json
                 rm sar_bucket_policy.json
                 break;;
