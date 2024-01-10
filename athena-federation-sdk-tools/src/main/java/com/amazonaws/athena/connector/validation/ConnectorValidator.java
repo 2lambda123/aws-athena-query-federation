@@ -355,7 +355,9 @@ public class ConnectorValidator
   private static void logSuccess()
   {
     log.info("==================================================");
+    log.info("==================================================");
     log.info("Successfully Passed Validation!");
+    log.info("==================================================");
     log.info("==================================================");
   }
 
