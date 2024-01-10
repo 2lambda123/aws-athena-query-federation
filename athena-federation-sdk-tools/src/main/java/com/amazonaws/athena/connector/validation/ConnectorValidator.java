@@ -86,7 +86,7 @@ public class ConnectorValidator
    * The main method of this class allows the following argument pattern:
    * --lambda-func lambda_func [--record-func record_func] [--catalog catalog]
    * [--schema schema [--table table [--constraints constraints]]] [--planning-only] [--help]
-   * <p>
+   * <p>\n * Refer to the README.md file for running the integration tests.
    * Run with the -h or --help options to see full argument descriptions, or see {@link TestConfig} below.
    */
   public static void main(String[] args)
