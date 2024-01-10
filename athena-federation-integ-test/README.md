@@ -54,11 +54,12 @@ class (`IntegrationTestBase`):
 ```java
 import org.testng.annotations.Test;
 
-public class MyConnectorIntegTest extends IntegrationTestBase
+public class RedshiftIntegTest extends IntegrationTestBase
 {
     @Test
     public void exampleIntegTest()
     {
+        // Actual integration test logic goes here
         //...
     }
 }
