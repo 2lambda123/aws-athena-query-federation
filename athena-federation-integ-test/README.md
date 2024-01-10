@@ -245,7 +245,7 @@ queries as part of the tests' execution:
 This section explains the steps necessary to run the integration tests for a connector
 locally from the terminal.
 
-### Environment Setup
+### Environment and Setup
 
 The following commands should be sent after cloning the Federation GitHub repository for
 the first time, and each time the connector's code changes:
@@ -259,7 +259,7 @@ the first time, and each time the connector's code changes:
 `sam package --template-file <connector.yaml> --output-template-file packaged.yaml
 --s3-bucket <s3-bucket> --region <region> --force-upload`
 
-### Running Integration Tests
+### Running the Integration Tests
 
 The following command will trigger the integration tests: `mvn failsafe:integration-test`
 
