@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cat << EOF
+echo << EOF
 # Run this script from the directory of the module (e.g. athena-example) that you wish to publish.
 # This script performs the following actions:
 # 1. Builds the maven project
@@ -56,7 +56,8 @@ then
       REGION="us-east-1"
 fi
 
-echo "Using AWS Region $REGION"
+echo "Using AWS Region $REGION" 
+set -x
 
 if [[ $REGION == cn-* ]]; then
     PARTITION="aws-cn"
@@ -104,7 +105,7 @@ if ! aws s3api get-bucket-policy --bucket $1 --region $REGION| grep 'Statement' 
 }
 EOM
                 cat sar_bucket_policy.json
-                set -e -x
+                set -e -x -x
                 aws s3api put-bucket-policy --bucket $1 --region $REGION --policy  file://sar_bucket_policy.json
                 rm sar_bucket_policy.json
                 break;;
@@ -118,4 +119,4 @@ set -e
 mvn clean install -Dpublishing=true
 
 sam package --template-file $2.yaml --output-template-file packaged.yaml --s3-bucket $1 --region $REGION
-sam publish --template packaged.yaml --region $REGION
+sam publish --template-file packaged.yaml --region $REGION
