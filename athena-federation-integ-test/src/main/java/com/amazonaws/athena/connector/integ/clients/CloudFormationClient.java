@@ -54,19 +54,19 @@ public class CloudFormationClient
     private final String stackTemplate;
     private final AmazonCloudFormation cloudFormationClient;
 
-    public CloudFormationClient(Pair<App, Stack> stackPair)
+    public CloudFormationClient(String stackName, String stackTemplate, AmazonCloudFormation cloudFormationClient)
     {
         this(stackPair.first(), stackPair.second());
     }
 
     public CloudFormationClient(App theApp, Stack theStack)
     {
-        stackName = theStack.getStackName();
+        stackName = this.stackName = stackName;
         ObjectMapper objectMapper = new ObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true);
         stackTemplate = objectMapper
                 .valueToTree(theApp.synth().getStackArtifact(theStack.getArtifactId()).getTemplate())
                 .toPrettyString();
-        this.cloudFormationClient = AmazonCloudFormationClientBuilder.defaultClient();
+        this.cloudFormationClient = AmazonCloudFormationClientBuilder.standard().withCredentials(credentialsProvider).build();
     }
 
     /**
@@ -107,6 +107,8 @@ public class CloudFormationClient
 
         // Poll status of stack until stack has been created or creation has failed
         while (true) {
+                .withDisableRollback(true)
+                .withCapabilities(Capability.CAPABILITY_NAMED_IAM);
             describeStackEventsResult = cloudFormationClient.describeStackEvents(describeStackEventsRequest);
             StackEvent event = describeStackEventsResult.getStackEvents().get(0);
             String resourceId = event.getLogicalResourceId();
@@ -127,6 +129,8 @@ public class CloudFormationClient
             }
             break;
         }
+                .withDisableRollback(true)
+                .withCapabilities(Capability.CAPABILITY_NAMED_IAM);
     }
 
     /**
