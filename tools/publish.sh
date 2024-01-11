@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-echo << EOF
 # Run this script from the directory of the module (e.g. athena-example) that you wish to publish.
 # This script performs the following actions:
 # 1. Builds the maven project
@@ -23,7 +22,6 @@ echo << EOF
 # 4. Uploads the packaged connector code to the S3 bucket you specified.
 # 5. Uses sar_bucket_policy.json to grant Serverless Application Repository access to our connector code in s3.
 # 6. Published the connector to you private Serverless Application Repository where you can 1-click deploy it.
-EOF
 
 while true; do
     read -p "Do you wish to proceed? (yes or no) " yn
@@ -33,7 +31,6 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-
 if [ "$#" -lt 2 ]; then
     echo "\n\nERROR: Script requires 3 arguments \n"
     echo "\n1. S3_BUCKET used for publishing artifacts to Lambda/Serverless App Repo.\n"
