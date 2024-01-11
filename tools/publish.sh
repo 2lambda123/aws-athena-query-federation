@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# Function: This script is used to perform the following actions:
+# Function: This function builds the maven project, creates a Serverless Application Package, produces a final packaged.yaml, uploads the packaged connector code to an S3 bucket, and publishes the connector to a private Serverless Application Repository.
+
+# Function: This function builds the maven project, creates a Serverless Application Package, produces a final packaged.yaml, uploads the packaged connector code to an S3 bucket, and publishes the connector to a private Serverless Application Repository. This script is used to perform the following actions:
 # 1. Builds the maven project
 # 2. Creates a Serverless Application Package using the athena-example.yaml
 # 3. Produces a final packaged.yaml which can be used to publish the application to your
