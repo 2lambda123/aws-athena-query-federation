@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# Function: This script is used to perform the following actions:
+# 1. Builds the maven project
+# 2. Creates a Serverless Application Package using the athena-example.yaml
+# 3. Produces a final packaged.yaml which can be used to publish the application to your
+#     private Serverless Application Repository or deployed via Cloudformation.
+# 4. Uploads the packaged connector code to the S3 bucket you specified.
+# 5. Uses sar_bucket_policy.json to grant Serverless Application Repository access to our connector code in s3.
+# 6. Publishes the connector to your private Serverless Application Repository where you can 1-click deploy it.
+
 # Copyright (C) 2019 Amazon Web Services
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
