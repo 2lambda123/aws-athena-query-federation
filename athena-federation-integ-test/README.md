@@ -116,7 +116,17 @@ integration tests:
 {
   "athena_work_group" : "FederationIntegrationTests",
   "secrets_manager_secret" : "redshift-integ1",
-  "environment_vars" : {
+  "athena_work_group" : "FederationIntegrationTests",
+  "secrets_manager_secret" : "redshift-integ1",
+            "spill_bucket" : "your_spill_bucket_here",
+            "spill_prefix" : "athena-spill",
+            "disable_spill_encryption" : "false",
+            "spill_put_request_headers": ""
+    "spill_bucket" : "athena-results",
+    "spill_prefix" : "athena-spill",
+    "disable_spill_encryption" : "false",
+    "spill_put_request_headers": ""
+  
     "spill_bucket" : "athena-results",
     "spill_prefix" : "new-athena-spill",
     "disable_spill_encryption" : "true",
@@ -164,7 +174,12 @@ To use the Athena Federated Query feature with AWS Secrets Manager, the VPC conn
 * **spill_put_request_headers** - (Optional) JSON encoded map of request headers and values for the s3 putObject request used for spilling. Example: `{"x-amz-server-side-encryption" : "AES256"}`. For more possible headers see: https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 * **disable_spill_encryption** - If set to `true` encryption for spilled data is disabled (default: `false`).
 
-**VPC configuration** (Optional) - Parameters needed to configure resources within a VPC (e.g. DB cluster):
+### Setting Up VPC Configuration
+
+In order to set up the necessary VPC configuration, follow these steps:
+1. Identify the VPC Id, Security Group Id, and Subnet Ids to be used for the connector testing environment.
+2. In the test configuration file, replace the placeholders for VPC attributes with the actual VPC Id, Security Group Id, Subnet Ids, and Availability Zones.
+3. Ensure that the corresponding VPC and associated resources are appropriately configured to allow the necessary traffic flow.
 * **vpc_id** - The VPC Id (e.g. `"vpc_id": "vpc-xxx"`).
 * **security_group_id** - The Security Group Id (e.g. `"security_group_id": "sg-xxx"`).
 * **subnet_ids** - A list consisting of at least one Subnet Id (e.g. `"subnet_ids": ["subnet-xxx1", "subnet-xxx2"]`).
@@ -250,10 +265,9 @@ locally from the terminal.
 The following commands should be sent after cloning the Federation GitHub repository for
 the first time, and each time the connector's code changes:
 
-1. From the **athena-federation-sdk** dir, run `mvn clean install` if you haven't done so already.
-2. From the **athena-federation-integ-test** dir, run `mvn clean install` if you haven't done so already
-   (**Note: failure to follow this step will result in compilation errors**).
-3. From your connector's dir, run `mvn clean install`.
+1. Before running the integration tests, ensure that the athena-federation-sdk is set up by running the command `mvn clean install` from the **athena-federation-sdk** directory.
+2. Next, navigate to the **athena-federation-integ-test** directory and run `mvn clean install` to set up the integration test environment. Note that failure to follow this step may result in compilation errors.
+3. Afterwards, navigate to your specific connector's directory and run `mvn clean install` to build and test your connector.
 4. Export the IAM credentials for the AWS account used for testing purposes.
 5. Package the connector (from the connector's directory):
 `sam package --template-file <connector.yaml> --output-template-file packaged.yaml
@@ -261,7 +275,7 @@ the first time, and each time the connector's code changes:
 
 ### Running the Integration Tests
 
-The following command will trigger the integration tests: `mvn failsafe:integration-test`
+Finally, execute the command `mvn failsafe:integration-test` to run the integration tests for the connector.
 
 If run from the root directory, the command will execute the integration tests for all connectors.
 Likewise, if run from a specific connector's directory, it will trigger the integration tests
