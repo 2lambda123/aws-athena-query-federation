@@ -37,7 +37,6 @@ import software.amazon.awscdk.core.App;
 import software.amazon.awscdk.core.Stack;
 
 import java.util.List;
-
 /**
  * Responsible for creating the CloudFormation stack needed to test the connector, and unwinding it once testing is
  * done.
@@ -63,7 +62,7 @@ private class CloudFormationClient
         this(stackPair.first(), stackPair.second());
     }
 
-    public CloudFormationClient(Stack theStack, App theApp)
+    public CloudFormationClient(Pair<Stack, App> stackPair)
     {
         stackName = this.stackName = stackName;
         ObjectMapper objectMapper = new ObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true);
