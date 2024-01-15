@@ -105,7 +105,17 @@ integration tests:
 {
   "athena_work_group" : "FederationIntegrationTests",
   "secrets_manager_secret" : "redshift-integ1",
-  "environment_vars" : {
+  "athena_work_group" : "FederationIntegrationTests",
+  "secrets_manager_secret" : "redshift-integ1",
+            "spill_bucket" : "your_spill_bucket_here",
+            "spill_prefix" : "athena-spill",
+            "disable_spill_encryption" : "false",
+            "spill_put_request_headers": ""
+    "spill_bucket" : "athena-results",
+    "spill_prefix" : "athena-spill",
+    "disable_spill_encryption" : "false",
+    "spill_put_request_headers": ""
+  
     "spill_bucket" : "athena-results",
     "spill_prefix" : "athena-spill",
     "disable_spill_encryption" : "false",
@@ -153,7 +163,12 @@ To use the Athena Federated Query feature with AWS Secrets Manager, the VPC conn
 * **spill_put_request_headers** - (Optional) JSON encoded map of request headers and values for the s3 putObject request used for spilling. Example: `{"x-amz-server-side-encryption" : "AES256"}`. For more possible headers see: https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 * **disable_spill_encryption** - If set to `true` encryption for spilled data is disabled (default: `false`).
 
-**VPC configuration** (Optional) - Parameters needed to configure resources within a VPC (e.g. DB cluster):
+### Setting Up VPC Configuration
+
+In order to set up the necessary VPC configuration, follow these steps:
+1. Identify the VPC Id, Security Group Id, and Subnet Ids to be used for the connector testing environment.
+2. In the test configuration file, replace the placeholders for VPC attributes with the actual VPC Id, Security Group Id, Subnet Ids, and Availability Zones.
+3. Ensure that the corresponding VPC and associated resources are appropriately configured to allow the necessary traffic flow.
 * **vpc_id** - The VPC Id (e.g. `"vpc_id": "vpc-xxx"`).
 * **security_group_id** - The Security Group Id (e.g. `"security_group_id": "sg-xxx"`).
 * **subnet_ids** - A list consisting of at least one Subnet Id (e.g. `"subnet_ids": ["subnet-xxx1", "subnet-xxx2"]`).

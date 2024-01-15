@@ -42,7 +42,7 @@ import java.util.List;
  * Responsible for creating the CloudFormation stack needed to test the connector, and unwinding it once testing is
  * done.
  */
-public class CloudFormationClient
+private class CloudFormationClient
 {
     private static final Logger logger = LoggerFactory.getLogger(CloudFormationClient.class);
 
@@ -79,7 +79,7 @@ public class CloudFormationClient
         logger.info("------------------------------------------------------");
         logger.info("Create CloudFormation stack: {}", stackName);
         logger.info("------------------------------------------------------");
-        // logger.info(stackTemplate);
+        logger.info(stackTemplate);
 
         CreateStackRequest createStackRequest = new CreateStackRequest()
                 .withStackName(stackName)
@@ -90,7 +90,7 @@ public class CloudFormationClient
     }
 
     /**
-     * Processes the creation of a CloudFormation stack including polling of the stack's status while in progress.
+     * Processes the creation of a CloudFormation stack including polling of the stack's status while in progress, adds appropriate error handling and logging, and throws RuntimeException
      * @param createStackRequest Request used to generate the CloudFormation stack.
      * @throws RuntimeException The CloudFormation stack creation failed.
      */
@@ -125,7 +125,7 @@ public class CloudFormationClient
                 }
             }
             else if (resourceStatus.equals(CF_CREATE_RESOURCE_FAILED_STATUS)) {
-                throw new RuntimeException(getCloudFormationErrorReasons(describeStackEventsResult.getStackEvents()));
+                throw new RuntimeException(getCloudFormationErrorReasons(describeStackEventsResult.getStackEvents()) + "\n Stack Events: " + describeStackEventsResult.getStackEvents());
             }
             break;
         }
