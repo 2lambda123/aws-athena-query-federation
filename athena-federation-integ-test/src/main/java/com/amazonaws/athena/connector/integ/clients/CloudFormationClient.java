@@ -1,47 +1,3 @@
-/*-
- * #%L
- * Amazon Athena Query Federation Integ Test
- * %%
- * Copyright (C) 2019 - 2020 Amazon Web Services
- * %%
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * #L%
- */
-package com.amazonaws.athena.connector.integ.clients;
-
-import com.amazonaws.services.cloudformation.AmazonCloudFormation;
-import com.amazonaws.services.cloudformation.AmazonCloudFormationClientBuilder;
-import com.amazonaws.services.cloudformation.model.Capability;
-import com.amazonaws.services.cloudformation.model.CreateStackRequest;
-import com.amazonaws.services.cloudformation.model.CreateStackResult;
-import com.amazonaws.services.cloudformation.model.DeleteStackRequest;
-import com.amazonaws.services.cloudformation.model.DescribeStackEventsRequest;
-import com.amazonaws.services.cloudformation.model.DescribeStackEventsResult;
-import com.amazonaws.services.cloudformation.model.StackEvent;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.testng.internal.collections.Pair;
-import software.amazon.awscdk.core.App;
-import software.amazon.awscdk.core.Stack;
-
-import java.util.List;
-
-/**
- * Responsible for creating the CloudFormation stack needed to test the connector, and unwinding it once testing is
- * done.
- */
 private class CloudFormationClient
 {
     private static final Logger logger = LoggerFactory.getLogger(CloudFormationClient.class);
@@ -49,6 +5,17 @@ private class CloudFormationClient
     private static final String CF_CREATE_RESOURCE_IN_PROGRESS_STATUS = "CREATE_IN_PROGRESS";
     private static final String CF_CREATE_RESOURCE_FAILED_STATUS = "CREATE_FAILED";
     private static final long sleepTimeMillis = 5000L;
+
+    private final String stackName;
+    private final String stackTemplate;
+    private final AmazonCloudFormation cloudFormationClient;
+
+    public CloudFormationClient(String stackName, String stackTemplate, AmazonCloudFormation cloudFormationClient)
+    {
+        this.stackName = stackName;
+        this.stackTemplate = stackTemplate;
+        this.cloudFormationClient = cloudFormationClient;
+    }
 
     private final String stackName;
     private final String stackTemplate;
