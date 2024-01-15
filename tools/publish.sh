@@ -26,7 +26,7 @@
 
 # Run this script from the directory of the module (e.g. athena-example) that you wish to publish.
 # This script performs the following actions:
-<<<<<<< HEAD
+<<<<<<< main
 # 1. Compile and build the Maven project
 # 2. Generates a Serverless Application Package using the athena-example.yaml
 # 3. Creates a final packaged.yaml that can be utilized to publish the application to your private Serverless Application Repository or deploy via CloudFormation
@@ -137,7 +137,7 @@ fi
 set -e
 mvn clean package
 
-<<<<<<< HEAD
+<<<<<<< main
 # 8. Packages the connector using SAM to create a deployable CloudFormation template
 # 9. Publishes the connector using SAM
 =======
