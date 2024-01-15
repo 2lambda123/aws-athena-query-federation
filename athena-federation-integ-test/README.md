@@ -12,10 +12,11 @@ integration-test writer needs to do is provide an implementation for a handful o
 and the Integration-Test framework will do the rest.
 
 The framework provides the following benefits:
-* Automatically provisions all infrastructure resources prior to testing, and de-provisions
-them immediately after.
-* Provides a set of public APIs that can be used to send queries via Athena using the lambda
-connector.
+
+- Automatically provisions all infrastructure resources prior to testing, and de-provisions
+  them immediately after.
+- Provides a set of public APIs that can be used to send queries via Athena using the lambda
+  connector.
 
 ## Writing Integration Tests
 
@@ -101,25 +102,38 @@ The Integration-Test framework uses several configurable attributes to set up th
 Athena work-group, etc...) Those attributes must be placed in the connectors' `test-config.json` JSON file available
 in each connector's **etc** directory. The following is an example of a test configuration file used for the Redshift
 integration tests:
+
 ```json
 {
-  "athena_work_group" : "FederationIntegrationTests",
-  "secrets_manager_secret" : "redshift-integ1",
-  "environment_vars" : {
-    "spill_bucket" : "athena-results",
-    "spill_prefix" : "athena-spill",
-    "disable_spill_encryption" : "false",
+  "athena_work_group": "FederationIntegrationTests",
+  "secrets_manager_secret": "redshift-integ1",
+  "environment_vars": {
+    "spill_bucket": "athena-results",
+    "spill_prefix": "athena-spill",
+    "disable_spill_encryption": "false",
     "spill_put_request_headers": ""
   },
-  "vpc_configuration" : {
+  "vpc_configuration": {
     "vpc_id": "vpc-569cdc2c",
     "security_group_id": "sg-2bc8117a",
-    "subnet_ids": ["subnet-a3017a9d", "subnet-bb894ef6", "subnet-7b6f5f27", "subnet-d55361fb",
-      "subnet-da5db3d4", "subnet-88d6e2ef"],
-    "availability_zones": ["us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d", "us-east-1e",
-      "us-ease-1f"]
+    "subnet_ids": [
+      "subnet-a3017a9d",
+      "subnet-bb894ef6",
+      "subnet-7b6f5f27",
+      "subnet-d55361fb",
+      "subnet-da5db3d4",
+      "subnet-88d6e2ef"
+    ],
+    "availability_zones": [
+      "us-east-1a",
+      "us-east-1b",
+      "us-east-1c",
+      "us-east-1d",
+      "us-east-1e",
+      "us-ease-1f"
+    ]
   },
-  "user_settings" : {
+  "user_settings": {
     "redshift_db_name": "public",
     "redshift_db_port": "5439",
     "redshift_table_movies": "movies",
@@ -127,13 +141,16 @@ integration tests:
   }
 }
 ```
+
 General attributes needed for the tests' execution:
-* **athena_work_group** - The Athena Workgroup used for running integration tests (default:
+
+- **athena_work_group** - The Athena Workgroup used for running integration tests (default:
   `FederationIntegrationTests`).
-* **secrets_manager_secret** - Secret name used to retrieve user credentials from SecretsManager.
+- **secrets_manager_secret** - Secret name used to retrieve user credentials from SecretsManager.
 
 Since secret credentials may be needed when creating resources specific to the tests' execution (e.g. DB cluster), the
 Integration-Test framework provides the following public API allowing access to the SecretsManager secret credentials:
+
 ```java
     /**
      * Public accessor for the SecretsManager credentials obtained using the secrets_manager_secret attribute entered
@@ -145,23 +162,27 @@ Integration-Test framework provides the following public API allowing access to 
         return secretCredentials;
     }
 ```
+
 To use the Athena Federated Query feature with AWS Secrets Manager, the VPC connected to your Lambda function should have [internet access](https://aws.amazon.com/premiumsupport/knowledge-center/internet-access-lambda-function/) or a [VPC endpoint](https://docs.aws.amazon.com/secretsmanager/latest/userguide/vpc-endpoint-overview.html#vpc-endpoint-create) to connect to Secrets Manager.
 
 **Environment variables** - Parameters used by the connectors' internal logic:
-* **spill_bucket** - The S3 bucket used for spilling excess data.
-* **spill_prefix** - The prefix within the S3 spill bucket (default: `athena-spill`).
-* **spill_put_request_headers** - (Optional) JSON encoded map of request headers and values for the s3 putObject request used for spilling. Example: `{"x-amz-server-side-encryption" : "AES256"}`. For more possible headers see: https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
-* **disable_spill_encryption** - If set to `true` encryption for spilled data is disabled (default: `false`).
+
+- **spill_bucket** - The S3 bucket used for spilling excess data.
+- **spill_prefix** - The prefix within the S3 spill bucket (default: `athena-spill`).
+- **spill_put_request_headers** - (Optional) JSON encoded map of request headers and values for the s3 putObject request used for spilling. Example: `{"x-amz-server-side-encryption" : "AES256"}`. For more possible headers see: https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
+- **disable_spill_encryption** - If set to `true` encryption for spilled data is disabled (default: `false`).
 
 **VPC configuration** (Optional) - Parameters needed to configure resources within a VPC (e.g. DB cluster):
-* **vpc_id** - The VPC Id (e.g. `"vpc_id": "vpc-xxx"`).
-* **security_group_id** - The Security Group Id (e.g. `"security_group_id": "sg-xxx"`).
-* **subnet_ids** - A list consisting of at least one Subnet Id (e.g. `"subnet_ids": ["subnet-xxx1", "subnet-xxx2"]`).
-* **availability_zones** - A list consisting of at least one AZ (e.g. `"availability_zones": ["us-east-1a", "us-east-1b"]`).
+
+- **vpc_id** - The VPC Id (e.g. `"vpc_id": "vpc-xxx"`).
+- **security_group_id** - The Security Group Id (e.g. `"security_group_id": "sg-xxx"`).
+- **subnet_ids** - A list consisting of at least one Subnet Id (e.g. `"subnet_ids": ["subnet-xxx1", "subnet-xxx2"]`).
+- **availability_zones** - A list consisting of at least one AZ (e.g. `"availability_zones": ["us-east-1a", "us-east-1b"]`).
 
 The framework uses the aforementioned attributes to configure the connector. In order for the latter to be able to connect
 to the data source, however, the same VPC configuration must be set when provisioning the DB instance. To that end, the
 Integration-Test framework provides the following public API allowing access to the VPC attributes:
+
 ```java
     /**
      * Public accessor for the VPC attributes used in generating the lambda function.
@@ -175,6 +196,7 @@ User customizable Map that contains user-specific attributes (e.g. `"user_settin
 is constructed from a JSON structure and returned as Map<String, Object>, it can contain different type of attributes
 ranging from a single value, a list of values, to even a nested structure. the Integration-Test framework provides the
 following public API allowing access to the `user_settings` attribute:
+
 ```java
     /**
      * Public accessor for the user_settings attribute (stored in the test-config.json file) that are customizable to
@@ -244,7 +266,7 @@ the first time, and each time the connector's code changes:
 3. Afterwards, navigate to your specific connector's directory and run `mvn clean install` to build and test your connector.
 4. Export the IAM credentials for the AWS account used for testing purposes.
 5. Package the connector (from the connector's directory):
-`sam package --template-file <connector.yaml> --output-template-file packaged.yaml
+   `sam package --template-file <connector.yaml> --output-template-file packaged.yaml
 --s3-bucket <s3-bucket> --region <region> --force-upload`
 
 ### Running Integration Tests
