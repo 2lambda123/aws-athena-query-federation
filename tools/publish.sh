@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cat << EOF
+cat <<EOF
 # Run this script from the directory of the module (e.g. athena-example) that you wish to publish.
 # This script performs the following actions:
 # 1. Compile and build the Maven project
@@ -26,64 +26,65 @@ cat << EOF
 EOF
 
 while true; do
-    read -p "Do you wish to proceed? (yes or no) " yn
-    case $yn in
-        [Yy]* ) echo "Proceeding..."; break;;
-        [Nn]* ) exit;;
-        * ) echo "Please answer yes or no.";;
-    esac
+  read -p "Do you wish to proceed? (yes or no) " yn
+  case $yn in
+    [Yy]*)
+      echo "Proceeding..."
+      break
+      ;;
+    [Nn]*) exit ;;
+    *) echo "Please answer yes or no." ;;
+  esac
 done
 
 if [ "$#" -lt 2 ]; then
-    echo "\n\nERROR: Script requires 3 arguments \n"
-    echo "\n1. S3_BUCKET used for publishing artifacts to Lambda/Serverless App Repo.\n"
-    echo "\n2. The connector module to publish (e.g. athena-exmaple or athena-cloudwatch) \n"
-    echo "\n3. The AWS REGION to target (e.g. us-east-1 or us-east-2) \n"
-    echo "\n\n USAGE from the module's directory: ../tools/publish.sh my_s3_bucket athena-example \n"
-    exit;
+  echo "\n\nERROR: Script requires 3 arguments \n"
+  echo "\n1. S3_BUCKET used for publishing artifacts to Lambda/Serverless App Repo.\n"
+  echo "\n2. The connector module to publish (e.g. athena-exmaple or athena-cloudwatch) \n"
+  echo "\n3. The AWS REGION to target (e.g. us-east-1 or us-east-2) \n"
+  echo "\n\n USAGE from the module's directory: ../tools/publish.sh my_s3_bucket athena-example \n"
+  exit
 fi
 
 if test -f "$2".yaml; then
-    echo "SAR yaml found. We appear to be in the right directory."
+  echo "SAR yaml found. We appear to be in the right directory."
 else
   echo "SAR yaml not found, attempting to switch to module directory."
   cd "$2"
 fi
 
 REGION=$3
-if [ -z "$REGION" ]
-then
-      REGION="us-east-1"
+if [ -z "$REGION" ]; then
+  REGION="us-east-1"
 fi
 
 echo "Using AWS Region $REGION"
 
 if [[ $REGION == cn-* ]]; then
-    PARTITION="aws-cn"
+  PARTITION="aws-cn"
 elif [[ $REGION == us-gov-* ]]; then
-    PARTITION="aws-us-gov"
+  PARTITION="aws-us-gov"
 else
   PARTITION="aws"
 fi
 
 echo "Using PARTITION $PARTITION"
 
-
-if ! aws s3api get-bucket-policy --bucket "$1" --region "$REGION"| grep 'Statement' ; then
-    echo "No bucket policy is set on $1 , would you like to add a Serverless Application Repository Bucket Policy?"
-    while true; do
-        read -p "Do you wish to proceed? (yes or no) " yn
-        case $yn in
-            [Yy]* ) echo "Proceeding..."
-                account_regex="^[0-9]{12}$"
-                while ! [[ "$account" =~ "$account_regex" ]]
-                do
-                    read -p "Enter the AWS Account ID that will be used to publish to Serverless Application Repository (limits SAR access to applications on the specified account: " account
-                    if ! [[ "$account" =~ "$account_regex" ]];
-                        then echo "Enter a valid AWS Account ID"
-                    fi
-                done
-                cat > sar_bucket_policy.json <<- EOM
+if ! aws s3api get-bucket-policy --bucket "$1" --region "$REGION" | grep 'Statement'; then
+  echo "No bucket policy is set on $1 , would you like to add a Serverless Application Repository Bucket Policy?"
+  while true; do
+    read -p "Do you wish to proceed? (yes or no) " yn
+    case $yn in
+      [Yy]*)
+        echo "Proceeding..."
+        account_regex="^[0-9]{12}$"
+        while ! [[ "$account" =~ "$account_regex" ]]; do
+          read -p "Enter the AWS Account ID that will be used to publish to Serverless Application Repository (limits SAR access to applications on the specified account: " account
+          if ! [[ "$account" =~ "$account_regex" ]]; then
+            echo "Enter a valid AWS Account ID"
+          fi
+        done
+        cat >sar_bucket_policy.json <<-EOM
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -103,15 +104,19 @@ if ! aws s3api get-bucket-policy --bucket "$1" --region "$REGION"| grep 'Stateme
   ]
 }
 EOM
-                cat sar_bucket_policy.json
-                set -e
-                aws s3api put-bucket-policy --bucket "$1" --region "$REGION" --policy  file://sar_bucket_policy.json
-                rm sar_bucket_policy.json
-                break;;
-            [Nn]* ) echo "Skipping bucket policy, not that this may result in failed attempts to publish to Serverless Application Repository"; break;;
-            * ) echo "Please answer yes or no.";;
-        esac
-    done
+        cat sar_bucket_policy.json
+        set -e
+        aws s3api put-bucket-policy --bucket "$1" --region "$REGION" --policy file://sar_bucket_policy.json
+        rm sar_bucket_policy.json
+        break
+        ;;
+      [Nn]*)
+        echo "Skipping bucket policy, not that this may result in failed attempts to publish to Serverless Application Repository"
+        break
+        ;;
+      *) echo "Please answer yes or no." ;;
+    esac
+  done
 fi
 
 set -e
