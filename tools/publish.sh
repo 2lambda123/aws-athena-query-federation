@@ -47,7 +47,7 @@ if test -f "$2".yaml; then
     echo "SAR yaml found. We appear to be in the right directory."
 else
   echo "SAR yaml not found, attempting to switch to module directory."
-  cd $2
+  cd "$2"
 fi
 
 REGION=$3
@@ -69,7 +69,7 @@ fi
 echo "Using PARTITION $PARTITION"
 
 
-if ! aws s3api get-bucket-policy --bucket $1 --region $REGION| grep 'Statement' ; then
+if ! aws s3api get-bucket-policy --bucket "$1" --region "$REGION"| grep 'Statement' ; then
     echo "No bucket policy is set on $1 , would you like to add a Serverless Application Repository Bucket Policy?"
     while true; do
         read -p "Do you wish to proceed? (yes or no) " yn
@@ -105,7 +105,7 @@ if ! aws s3api get-bucket-policy --bucket $1 --region $REGION| grep 'Statement' 
 EOM
                 cat sar_bucket_policy.json
                 set -e
-                aws s3api put-bucket-policy --bucket $1 --region $REGION --policy  file://sar_bucket_policy.json
+                aws s3api put-bucket-policy --bucket "$1" --region "$REGION" --policy  file://sar_bucket_policy.json
                 rm sar_bucket_policy.json
                 break;;
             [Nn]* ) echo "Skipping bucket policy, not that this may result in failed attempts to publish to Serverless Application Repository"; break;;
