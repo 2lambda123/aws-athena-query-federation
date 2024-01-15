@@ -274,7 +274,7 @@ the first time, and each time the connector's code changes:
 `sam package --template-file <connector.yaml> --output-template-file packaged.yaml
 --s3-bucket <s3-bucket> --region <region> --force-upload`
 
-<<<<<<< HEAD
+<<<<<<< master
 ### Running the Integration Tests
 =======
 ### Running Integration Tests and Troubleshooting
