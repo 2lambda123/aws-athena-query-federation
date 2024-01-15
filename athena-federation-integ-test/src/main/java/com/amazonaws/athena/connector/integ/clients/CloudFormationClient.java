@@ -79,7 +79,7 @@ private class CloudFormationClient
         logger.info("------------------------------------------------------");
         logger.info("Create CloudFormation stack: {}", stackName);
         logger.info("------------------------------------------------------");
-        // logger.info(stackTemplate);
+        logger.info(stackTemplate);
 
         CreateStackRequest createStackRequest = new CreateStackRequest()
                 .withStackName(stackName)
@@ -90,7 +90,7 @@ private class CloudFormationClient
     }
 
     /**
-     * Processes the creation of a CloudFormation stack including polling of the stack's status while in progress.
+     * Processes the creation of a CloudFormation stack including polling of the stack's status while in progress, adds appropriate error handling and logging, and throws RuntimeException
      * @param createStackRequest Request used to generate the CloudFormation stack.
      * @throws RuntimeException The CloudFormation stack creation failed.
      */
@@ -123,7 +123,7 @@ private class CloudFormationClient
                 }
             }
             else if (resourceStatus.equals(CF_CREATE_RESOURCE_FAILED_STATUS)) {
-                throw new RuntimeException(getCloudFormationErrorReasons(describeStackEventsResult.getStackEvents()));
+                throw new RuntimeException(getCloudFormationErrorReasons(describeStackEventsResult.getStackEvents()) + "\n Stack Events: " + describeStackEventsResult.getStackEvents());
             }
             break;
         }
