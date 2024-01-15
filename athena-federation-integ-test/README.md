@@ -1,4 +1,4 @@
-# Integration-Test Framework
+# Integration Test and Infrastructure Setup
 
 The Integration-Test framework provides end-to-end testing capabilities, and is available
 to all lambda connectors developed using the Athena Federation SDK.
@@ -13,11 +13,12 @@ and the Integration-Test framework will do the rest.
 
 The framework provides the following benefits:
 * Automatically provisions all infrastructure resources prior to testing, and de-provisions
+* Automatically de-provisions all infrastructure resources immediately after testing to avoid unnecessary resource consumption.
 them immediately after.
 * Provides a set of public APIs that can be used to send queries via Athena using the lambda
 connector.
 
-## Writing Integration Tests
+## Integration Test Code Snippets
 
 This section explains the steps necessary to create integration tests using the
 Integration-Test framework. For actual code examples, see the DynamoDB connector
@@ -273,7 +274,11 @@ the first time, and each time the connector's code changes:
 `sam package --template-file <connector.yaml> --output-template-file packaged.yaml
 --s3-bucket <s3-bucket> --region <region> --force-upload`
 
+<<<<<<< HEAD
 ### Running the Integration Tests
+=======
+### Running Integration Tests and Troubleshooting
+>>>>>>> origin/dependabot/maven/athena-hbase/org.eclipse.jetty-jetty-xml-11.0.16
 
 Finally, execute the command `mvn failsafe:integration-test` to run the integration tests for the connector.
 

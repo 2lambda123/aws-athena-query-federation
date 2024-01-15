@@ -54,12 +54,16 @@ private class CloudFormationClient
     private final String stackTemplate;
     private final AmazonCloudFormation cloudFormationClient;
 
+<<<<<<< HEAD
     public CloudFormationClient(String stackName, String stackTemplate, AmazonCloudFormation cloudFormationClient)
+=======
+    public CloudFormationClient(Pair<Stack, App> stackPair)
+>>>>>>> origin/dependabot/maven/athena-hbase/org.eclipse.jetty-jetty-xml-11.0.16
     {
         this(stackPair.first(), stackPair.second());
     }
 
-    public CloudFormationClient(App theApp, Stack theStack)
+    public CloudFormationClient(Stack theStack, App theApp)
     {
         stackName = this.stackName = stackName;
         ObjectMapper objectMapper = new ObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true);
@@ -74,7 +78,7 @@ private class CloudFormationClient
      * instance, Lambda function, etc...). Once the stack is created successfully, the lambda function is registered
      * with Athena.
      */
-    public void createStack()
+    public void createStack() throws Exception
     {
         logger.info("------------------------------------------------------");
         logger.info("Create CloudFormation stack: {}", stackName);
@@ -95,7 +99,7 @@ private class CloudFormationClient
      * @throws RuntimeException The CloudFormation stack creation failed.
      */
     private void processCreateStackRequest(CreateStackRequest createStackRequest)
-            throws RuntimeException
+            throws Exception
     {
         // Create CloudFormation stack.
         CreateStackResult result = cloudFormationClient.createStack(createStackRequest);
