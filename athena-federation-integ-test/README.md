@@ -13,6 +13,7 @@ and the Integration-Test framework will do the rest.
 
 The framework provides the following benefits:
 * Automatically provisions all infrastructure resources prior to testing, and de-provisions
+* Automatically de-provisions all infrastructure resources immediately after testing to avoid unnecessary resource consumption.
 them immediately after.
 * Provides a set of public APIs that can be used to send queries via Athena using the lambda
 connector.
