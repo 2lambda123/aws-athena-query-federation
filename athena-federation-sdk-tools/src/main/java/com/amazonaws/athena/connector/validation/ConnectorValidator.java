@@ -69,7 +69,18 @@ import static java.util.Objects.requireNonNull;
  * This tool can also be run using the validate_connector.sh script in the tools directory under the package root:
  * tools/validate_connector.sh [args]
  */
-public class ConnectorValidator
+   /**
+    * This class should be used to validate deployed Lambda functions that use Athena's Federation SDK.
+    * It simulates the basic query patterns that Athena will send to Lambda throughout its usage so that
+    * broader and sometimes more subtle logical issues can be discovered before being used through Athena.
+    * <p>
+    * You can run this tool using the following command:
+    * mvn exec:java -Dexec.mainClass=com.amazonaws.athena.connector.validation.ConnectorValidator -Dexec.args="[args]"
+    * <p>
+    * This tool can also be run using the validate_connector.sh script in the tools directory under the package root:
+    * tools/validate_connector.sh [args]
+    */
+public class ConnectorValidator implements AutoCloseable
 {
   private static final Logger log = LoggerFactory.getLogger(ConnectorValidator.class);
 
@@ -77,7 +88,7 @@ public class ConnectorValidator
 
   static final BlockAllocator BLOCK_ALLOCATOR = new BlockAllocatorImpl();
 
-  private ConnectorValidator()
+  public ConnectorValidator()
   {
     // Intentionally left blank.
   }
@@ -355,7 +366,9 @@ public class ConnectorValidator
   private static void logSuccess()
   {
     log.info("==================================================");
+    log.info("==================================================");
     log.info("Successfully Passed Validation!");
+    log.info("==================================================");
     log.info("==================================================");
   }
 

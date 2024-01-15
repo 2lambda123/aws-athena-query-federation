@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# Function: This function builds the maven project, creates a Serverless Application Package, produces a final packaged.yaml, uploads the packaged connector code to an S3 bucket, and publishes the connector to a private Serverless Application Repository.
+
+# Function: This function builds the maven project, creates a Serverless Application Package, produces a final packaged.yaml, uploads the packaged connector code to an S3 bucket, and publishes the connector to a private Serverless Application Repository. This script is used to perform the following actions:
+# 1. Builds the maven project
+# 2. Creates a Serverless Application Package using the athena-example.yaml
+# 3. Produces a final packaged.yaml which can be used to publish the application to your
+#     private Serverless Application Repository or deployed via Cloudformation.
+# 4. Uploads the packaged connector code to the S3 bucket you specified.
+# 5. Uses sar_bucket_policy.json to grant Serverless Application Repository access to our connector code in s3.
+# 6. Publishes the connector to your private Serverless Application Repository where you can 1-click deploy it.
+
 # Copyright (C) 2019 Amazon Web Services
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +24,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cat << EOF
 # Run this script from the directory of the module (e.g. athena-example) that you wish to publish.
 # This script performs the following actions:
 # 1. Builds the maven project
@@ -23,7 +33,6 @@ cat << EOF
 # 4. Uploads the packaged connector code to the S3 bucket you specified.
 # 5. Uses sar_bucket_policy.json to grant Serverless Application Repository access to our connector code in s3.
 # 6. Published the connector to you private Serverless Application Repository where you can 1-click deploy it.
-EOF
 
 while true; do
     read -p "Do you wish to proceed? (yes or no) " yn
@@ -33,13 +42,12 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-
 if [ "$#" -lt 2 ]; then
     echo "\n\nERROR: Script requires 3 arguments \n"
     echo "\n1. S3_BUCKET used for publishing artifacts to Lambda/Serverless App Repo.\n"
     echo "\n2. The connector module to publish (e.g. athena-exmaple or athena-cloudwatch) \n"
     echo "\n3. The AWS REGION to target (e.g. us-east-1 or us-east-2) \n"
-    echo "\n\n USAGE from the module's directory: ../tools/publish.sh my_s3_bucket athena-example \n"
+    echo "\n\n USAGE:\n  From the module's directory, run the publish script as follows:\n  ../tools/publish.sh <S3_BUCKET> <CONNECTOR_MODULE> <AWS_REGION> \n"
     exit;
 fi
 
@@ -56,7 +64,8 @@ then
       REGION="us-east-1"
 fi
 
-echo "Using AWS Region $REGION"
+echo "Using AWS Region $REGION" 
+set -x
 
 if [[ $REGION == cn-* ]]; then
     PARTITION="aws-cn"
@@ -104,7 +113,7 @@ if ! aws s3api get-bucket-policy --bucket $1 --region $REGION| grep 'Statement' 
 }
 EOM
                 cat sar_bucket_policy.json
-                set -e
+                set -e -x -x
                 aws s3api put-bucket-policy --bucket $1 --region $REGION --policy  file://sar_bucket_policy.json
                 rm sar_bucket_policy.json
                 break;;
@@ -118,4 +127,4 @@ set -e
 mvn clean install -Dpublishing=true
 
 sam package --template-file $2.yaml --output-template-file packaged.yaml --s3-bucket $1 --region $REGION
-sam publish --template packaged.yaml --region $REGION
+sam publish --template-file packaged.yaml --region $REGION
