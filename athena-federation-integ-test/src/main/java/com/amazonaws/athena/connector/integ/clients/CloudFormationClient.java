@@ -90,7 +90,7 @@ public class CloudFormationClient
     }
 
     /**
-     * Processes the creation of a CloudFormation stack including polling of the stack's status while in progress.
+     * Processes the creation of a CloudFormation stack including polling of the stack's status while in progress, adds appropriate error handling and logging, and throws RuntimeException
      * @param createStackRequest Request used to generate the CloudFormation stack.
      * @throws RuntimeException The CloudFormation stack creation failed.
      */
