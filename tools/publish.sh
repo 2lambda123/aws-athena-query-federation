@@ -76,10 +76,10 @@ if ! aws s3api get-bucket-policy --bucket "$1" --region "$REGION"| grep 'Stateme
         case $yn in
             [Yy]* ) echo "Proceeding..."
                 account_regex="^[0-9]{12}$"
-                while ! [[ $account =~ $account_regex ]]
+                while ! [[ "$account" =~ "$account_regex" ]]
                 do
                     read -p "Enter the AWS Account ID that will be used to publish to Serverless Application Repository (limits SAR access to applications on the specified account: " account
-                    if ! [[ $account =~ $account_regex ]];
+                    if ! [[ "$account" =~ "$account_regex" ]];
                         then echo "Enter a valid AWS Account ID"
                     fi
                 done
