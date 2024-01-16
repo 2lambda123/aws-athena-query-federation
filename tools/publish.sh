@@ -26,6 +26,16 @@
 
 # Run this script from the directory of the module (e.g. athena-example) that you wish to publish.
 # This script performs the following actions:
+<<<<<<< main
+# 1. Compile and build the Maven project
+# 2. Generates a Serverless Application Package using the athena-example.yaml
+# 3. Creates a final packaged.yaml that can be utilized to publish the application to your private Serverless Application Repository or deploy via CloudFormation
+# private Serverless Application Repository or deployed via Cloudformation.
+# 4. Uploads the packaged connector code to the specified S3 bucket
+# 5. Grants Serverless Application Repository access to the connector code in S3 using sar_bucket_policy.json
+# 6. Publishes the connector to the private Serverless Application Repository to enable 1-click deployment
+EOF
+=======
 # 1. Builds the maven project
 # 2. Creates a Serverless Application Package using the athena-example.yaml
 # 3. Produces a final packaged.yaml which can be used to publish the application to your
@@ -33,6 +43,7 @@
 # 4. Uploads the packaged connector code to the S3 bucket you specified.
 # 5. Uses sar_bucket_policy.json to grant Serverless Application Repository access to our connector code in s3.
 # 6. Published the connector to you private Serverless Application Repository where you can 1-click deploy it.
+>>>>>>> origin/dependabot/maven/athena-hbase/org.eclipse.jetty-jetty-xml-11.0.16
 
 while true; do
     read -p "Do you wish to proceed? (yes or no) " yn
@@ -124,7 +135,12 @@ EOM
 fi
 
 set -e
-mvn clean install -Dpublishing=true
+mvn clean package
 
+<<<<<<< main
+# 8. Packages the connector using SAM to create a deployable CloudFormation template
+# 9. Publishes the connector using SAM
+=======
 sam package --template-file $2.yaml --output-template-file packaged.yaml --s3-bucket $1 --region $REGION
 sam publish --template-file packaged.yaml --region $REGION
+>>>>>>> origin/dependabot/maven/athena-hbase/org.eclipse.jetty-jetty-xml-11.0.16

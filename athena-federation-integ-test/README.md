@@ -37,7 +37,7 @@ in most **pom.xml** files (e.g.
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>athena-federation-integ-test</artifactId>
-            <version>Current version of the SDK (e.g. 2022.47.1)</version>
+            <version>NEW_VERSION</version>
             <scope>test</scope>
         </dependency>
 ```
@@ -55,11 +55,12 @@ class (`IntegrationTestBase`):
 ```java
 import org.testng.annotations.Test;
 
-public class MyConnectorIntegTest extends IntegrationTestBase
+public class RedshiftIntegTest extends IntegrationTestBase implements RedshiftIntegTestITF
 {
     @Test
     public void exampleIntegTest()
     {
+        // Actual integration test logic goes here
         //...
     }
 }
@@ -71,14 +72,18 @@ Provide implementation for the following 4 abstract methods in the test class:
     /**
      * Must be overridden in the extending class to setup the DB table (i.e. insert rows into table, etc...)
      */
-    protected abstract void setUpTableData();
+    protected abstract void setUpTableData(){
+    // Implement the logic to set up the DB table by inserting rows into the table.
+}
 
     /**
      * Must be overridden in the extending class (can be a no-op) to create a connector-specific CloudFormation stack
      * resource (e.g. DB table) using AWS CDK.
      * @param stack The current CloudFormation stack.
      */
-    protected abstract void setUpStackData(final Stack stack);
+    protected abstract void setUpStackData(final Stack stack){
+    // Implement the logic to create a connector-specific CloudFormation stack resource using AWS CDK.
+}
 
     /**
      * Must be overridden in the extending class (can be a no-op) to set the lambda function's environment variables
@@ -86,14 +91,20 @@ Provide implementation for the following 4 abstract methods in the test class:
      * expected environment variables. This method is intended to supplement the test-config.json file environment_vars
      * attribute (see below) for cases where the environment variable cannot be hardcoded.
      */
-    protected abstract void setConnectorEnvironmentVars(final Map<String, String> environmentVars);
+    protected abstract void setConnectorEnvironmentVars(final Map<String, String> environmentVars){
+    // Implement the logic to set the lambda function's environment variables.
+    return Optional.empty();
+}
 
     /**
      * Must be overridden in the extending class to get the lambda function's IAM access policy. The latter sets up
      * access to multiple connector-specific AWS services (e.g. DynamoDB, Elasticsearch etc...)
      * @return A policy document object.
      */
-    protected abstract Optional<PolicyDocument> getConnectorAccessPolicy();
+    protected abstract Optional<PolicyDocument> getConnectorAccessPolicy(){
+    // Implement the logic to get the lambda function's IAM access policy.
+    return Optional.empty();
+}
 ```
 
 ### Test Configuration
@@ -106,11 +117,21 @@ integration tests:
 {
   "athena_work_group" : "FederationIntegrationTests",
   "secrets_manager_secret" : "redshift-integ1",
-  "environment_vars" : {
+  "athena_work_group" : "FederationIntegrationTests",
+  "secrets_manager_secret" : "redshift-integ1",
+            "spill_bucket" : "your_spill_bucket_here",
+            "spill_prefix" : "athena-spill",
+            "disable_spill_encryption" : "false",
+            "spill_put_request_headers": ""
     "spill_bucket" : "athena-results",
     "spill_prefix" : "athena-spill",
     "disable_spill_encryption" : "false",
     "spill_put_request_headers": ""
+  
+    "spill_bucket" : "athena-results",
+    "spill_prefix" : "new-athena-spill",
+    "disable_spill_encryption" : "true",
+    "spill_put_request_headers": "{\"x-amz-server-side-encryption\" : \"AES256\"}"
   },
   "vpc_configuration" : {
     "vpc_id": "vpc-569cdc2c",
@@ -154,7 +175,12 @@ To use the Athena Federated Query feature with AWS Secrets Manager, the VPC conn
 * **spill_put_request_headers** - (Optional) JSON encoded map of request headers and values for the s3 putObject request used for spilling. Example: `{"x-amz-server-side-encryption" : "AES256"}`. For more possible headers see: https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html
 * **disable_spill_encryption** - If set to `true` encryption for spilled data is disabled (default: `false`).
 
-**VPC configuration** (Optional) - Parameters needed to configure resources within a VPC (e.g. DB cluster):
+### Setting Up VPC Configuration
+
+In order to set up the necessary VPC configuration, follow these steps:
+1. Identify the VPC Id, Security Group Id, and Subnet Ids to be used for the connector testing environment.
+2. In the test configuration file, replace the placeholders for VPC attributes with the actual VPC Id, Security Group Id, Subnet Ids, and Availability Zones.
+3. Ensure that the corresponding VPC and associated resources are appropriately configured to allow the necessary traffic flow.
 * **vpc_id** - The VPC Id (e.g. `"vpc_id": "vpc-xxx"`).
 * **security_group_id** - The Security Group Id (e.g. `"security_group_id": "sg-xxx"`).
 * **subnet_ids** - A list consisting of at least one Subnet Id (e.g. `"subnet_ids": ["subnet-xxx1", "subnet-xxx2"]`).
@@ -235,23 +261,26 @@ queries as part of the tests' execution:
 This section explains the steps necessary to run the integration tests for a connector
 locally from the terminal.
 
-### Environment Setup
+### Environment and Setup
 
 The following commands should be sent after cloning the Federation GitHub repository for
 the first time, and each time the connector's code changes:
 
-1. From the **athena-federation-sdk** dir, run `mvn clean install` if you haven't done so already.
-2. From the **athena-federation-integ-test** dir, run `mvn clean install` if you haven't done so already
-   (**Note: failure to follow this step will result in compilation errors**).
-3. From your connector's dir, run `mvn clean install`.
+1. Before running the integration tests, ensure that the athena-federation-sdk is set up by running the command `mvn clean install` from the **athena-federation-sdk** directory.
+2. Next, navigate to the **athena-federation-integ-test** directory and run `mvn clean install` to set up the integration test environment. Note that failure to follow this step may result in compilation errors.
+3. Afterwards, navigate to your specific connector's directory and run `mvn clean install` to build and test your connector.
 4. Export the IAM credentials for the AWS account used for testing purposes.
 5. Package the connector (from the connector's directory):
 `sam package --template-file <connector.yaml> --output-template-file packaged.yaml
 --s3-bucket <s3-bucket> --region <region> --force-upload`
 
+<<<<<<< master
+### Running the Integration Tests
+=======
 ### Running Integration Tests and Troubleshooting
+>>>>>>> origin/dependabot/maven/athena-hbase/org.eclipse.jetty-jetty-xml-11.0.16
 
-The following command will trigger the integration tests: `mvn failsafe:integration-test`
+Finally, execute the command `mvn failsafe:integration-test` to run the integration tests for the connector.
 
 If run from the root directory, the command will execute the integration tests for all connectors.
 Likewise, if run from a specific connector's directory, it will trigger the integration tests

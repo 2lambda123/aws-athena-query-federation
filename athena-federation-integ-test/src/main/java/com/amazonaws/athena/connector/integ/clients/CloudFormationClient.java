@@ -37,12 +37,11 @@ import software.amazon.awscdk.core.App;
 import software.amazon.awscdk.core.Stack;
 
 import java.util.List;
-
 /**
  * Responsible for creating the CloudFormation stack needed to test the connector, and unwinding it once testing is
  * done.
  */
-public class CloudFormationClient
+private class CloudFormationClient
 {
     private static final Logger logger = LoggerFactory.getLogger(CloudFormationClient.class);
 
@@ -54,19 +53,23 @@ public class CloudFormationClient
     private final String stackTemplate;
     private final AmazonCloudFormation cloudFormationClient;
 
+<<<<<<< HEAD
+    public CloudFormationClient(String stackName, String stackTemplate, AmazonCloudFormation cloudFormationClient)
+=======
     public CloudFormationClient(Pair<Stack, App> stackPair)
+>>>>>>> origin/dependabot/maven/athena-hbase/org.eclipse.jetty-jetty-xml-11.0.16
     {
         this(stackPair.first(), stackPair.second());
     }
 
-    public CloudFormationClient(Stack theStack, App theApp)
+    public CloudFormationClient(Pair<Stack, App> stackPair)
     {
-        stackName = theStack.getStackName();
+        stackName = this.stackName = stackName;
         ObjectMapper objectMapper = new ObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true);
         stackTemplate = objectMapper
                 .valueToTree(theApp.synth().getStackArtifact(theStack.getArtifactId()).getTemplate())
                 .toPrettyString();
-        this.cloudFormationClient = AmazonCloudFormationClientBuilder.defaultClient();
+        this.cloudFormationClient = AmazonCloudFormationClientBuilder.standard().withCredentials(credentialsProvider).build();
     }
 
     /**
@@ -79,7 +82,7 @@ public class CloudFormationClient
         logger.info("------------------------------------------------------");
         logger.info("Create CloudFormation stack: {}", stackName);
         logger.info("------------------------------------------------------");
-        // logger.info(stackTemplate);
+        logger.info(stackTemplate);
 
         CreateStackRequest createStackRequest = new CreateStackRequest()
                 .withStackName(stackName)
@@ -90,7 +93,7 @@ public class CloudFormationClient
     }
 
     /**
-     * Processes the creation of a CloudFormation stack including polling of the stack's status while in progress.
+     * Processes the creation of a CloudFormation stack including polling of the stack's status while in progress, adds appropriate error handling and logging, and throws RuntimeException
      * @param createStackRequest Request used to generate the CloudFormation stack.
      * @throws RuntimeException The CloudFormation stack creation failed.
      */
@@ -107,6 +110,8 @@ public class CloudFormationClient
 
         // Poll status of stack until stack has been created or creation has failed
         while (true) {
+                .withDisableRollback(true)
+                .withCapabilities(Capability.CAPABILITY_NAMED_IAM);
             describeStackEventsResult = cloudFormationClient.describeStackEvents(describeStackEventsRequest);
             StackEvent event = describeStackEventsResult.getStackEvents().get(0);
             String resourceId = event.getLogicalResourceId();
@@ -123,10 +128,12 @@ public class CloudFormationClient
                 }
             }
             else if (resourceStatus.equals(CF_CREATE_RESOURCE_FAILED_STATUS)) {
-                throw new RuntimeException(getCloudFormationErrorReasons(describeStackEventsResult.getStackEvents()));
+                throw new RuntimeException(getCloudFormationErrorReasons(describeStackEventsResult.getStackEvents()) + "\n Stack Events: " + describeStackEventsResult.getStackEvents());
             }
             break;
         }
+                .withDisableRollback(true)
+                .withCapabilities(Capability.CAPABILITY_NAMED_IAM);
     }
 
     /**
