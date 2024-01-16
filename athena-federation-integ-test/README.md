@@ -1,4 +1,4 @@
-# Integration-Test Framework
+# Integration Test and Infrastructure Setup
 
 The Integration-Test framework provides end-to-end testing capabilities, and is available
 to all lambda connectors developed using the Athena Federation SDK.
@@ -13,11 +13,12 @@ and the Integration-Test framework will do the rest.
 
 The framework provides the following benefits:
 * Automatically provisions all infrastructure resources prior to testing, and de-provisions
+* Automatically de-provisions all infrastructure resources immediately after testing to avoid unnecessary resource consumption.
 them immediately after.
 * Provides a set of public APIs that can be used to send queries via Athena using the lambda
 connector.
 
-## Writing Integration Tests
+## Integration Test Code Snippets
 
 This section explains the steps necessary to create integration tests using the
 Integration-Test framework. For actual code examples, see the DynamoDB connector
@@ -36,7 +37,7 @@ in most **pom.xml** files (e.g.
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>athena-federation-integ-test</artifactId>
-            <version>Current version of the SDK (e.g. 2022.47.1)</version>
+            <version>NEW_VERSION</version>
             <scope>test</scope>
         </dependency>
 ```
@@ -54,11 +55,12 @@ class (`IntegrationTestBase`):
 ```java
 import org.testng.annotations.Test;
 
-public class MyConnectorIntegTest extends IntegrationTestBase
+public class RedshiftIntegTest extends IntegrationTestBase implements RedshiftIntegTestITF
 {
     @Test
     public void exampleIntegTest()
     {
+        // Actual integration test logic goes here
         //...
     }
 }
@@ -70,14 +72,18 @@ Provide implementation for the following 4 abstract methods in the test class:
     /**
      * Must be overridden in the extending class to setup the DB table (i.e. insert rows into table, etc...)
      */
-    protected abstract void setUpTableData();
+    protected abstract void setUpTableData(){
+    // Implement the logic to set up the DB table by inserting rows into the table.
+}
 
     /**
      * Must be overridden in the extending class (can be a no-op) to create a connector-specific CloudFormation stack
      * resource (e.g. DB table) using AWS CDK.
      * @param stack The current CloudFormation stack.
      */
-    protected abstract void setUpStackData(final Stack stack);
+    protected abstract void setUpStackData(final Stack stack){
+    // Implement the logic to create a connector-specific CloudFormation stack resource using AWS CDK.
+}
 
     /**
      * Must be overridden in the extending class (can be a no-op) to set the lambda function's environment variables
@@ -85,14 +91,20 @@ Provide implementation for the following 4 abstract methods in the test class:
      * expected environment variables. This method is intended to supplement the test-config.json file environment_vars
      * attribute (see below) for cases where the environment variable cannot be hardcoded.
      */
-    protected abstract void setConnectorEnvironmentVars(final Map<String, String> environmentVars);
+    protected abstract void setConnectorEnvironmentVars(final Map<String, String> environmentVars){
+    // Implement the logic to set the lambda function's environment variables.
+    return Optional.empty();
+}
 
     /**
      * Must be overridden in the extending class to get the lambda function's IAM access policy. The latter sets up
      * access to multiple connector-specific AWS services (e.g. DynamoDB, Elasticsearch etc...)
      * @return A policy document object.
      */
-    protected abstract Optional<PolicyDocument> getConnectorAccessPolicy();
+    protected abstract Optional<PolicyDocument> getConnectorAccessPolicy(){
+    // Implement the logic to get the lambda function's IAM access policy.
+    return Optional.empty();
+}
 ```
 
 ### Test Configuration
@@ -117,9 +129,9 @@ integration tests:
     "spill_put_request_headers": ""
   
     "spill_bucket" : "athena-results",
-    "spill_prefix" : "athena-spill",
-    "disable_spill_encryption" : "false",
-    "spill_put_request_headers": ""
+    "spill_prefix" : "new-athena-spill",
+    "disable_spill_encryption" : "true",
+    "spill_put_request_headers": "{\"x-amz-server-side-encryption\" : \"AES256\"}"
   },
   "vpc_configuration" : {
     "vpc_id": "vpc-569cdc2c",
@@ -249,7 +261,7 @@ queries as part of the tests' execution:
 This section explains the steps necessary to run the integration tests for a connector
 locally from the terminal.
 
-### Environment Setup
+### Environment and Setup
 
 The following commands should be sent after cloning the Federation GitHub repository for
 the first time, and each time the connector's code changes:
@@ -262,7 +274,11 @@ the first time, and each time the connector's code changes:
 `sam package --template-file <connector.yaml> --output-template-file packaged.yaml
 --s3-bucket <s3-bucket> --region <region> --force-upload`
 
-### Running Integration Tests
+<<<<<<< master
+### Running the Integration Tests
+=======
+### Running Integration Tests and Troubleshooting
+>>>>>>> origin/dependabot/maven/athena-hbase/org.eclipse.jetty-jetty-xml-11.0.16
 
 Finally, execute the command `mvn failsafe:integration-test` to run the integration tests for the connector.
 

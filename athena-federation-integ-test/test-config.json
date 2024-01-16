@@ -1,0 +1,24 @@
+{
+  "athena_work_group" : "FederationIntegrationTests",
+  "secrets_manager_secret" : "redshift-integ1",
+  "environment_vars" : {
+    "spill_bucket" : "athena-results",
+    "spill_prefix" : "athena-spill",
+    "disable_spill_encryption" : "false",
+    "spill_put_request_headers": ""
+  },
+  "vpc_configuration" : {
+    "vpc_id": "vpc-569cdc2c",
+    "security_group_id": "sg-2bc8117a",
+    "subnet_ids": ["subnet-a3017a9d", "subnet-bb894ef6", "subnet-7b6f5f27", "subnet-d55361fb",
+      "subnet-da5db3d4", "subnet-88d6e2ef"],
+    "availability_zones": ["us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d", "us-east-1e",
+      "us-ease-1f"]
+  },
+  "user_settings" : {
+    "redshift_db_name": "public",
+    "redshift_db_port": "5439",
+    "redshift_table_movies": "movies",
+    "redshift_table_bday": "bday"
+  }
+}
