@@ -1,0 +1,1365 @@
+repo_name: 2lambda123/aws-athena-query-federation
+report_id: 1e761b4e4ca30e72fef7997550f13f4d
+version: 0.1
+repo_type: Public
+timestamp: '2024-02-29T19:17:35+00:00'
+requested_by: namratas-trianz
+provider: github
+branch: master
+detected_tools_count: 121
+tools:
+- name: Java
+  description: A concurrent, class-based, object-oriented, language specifically designed
+    to have as few implementation dependencies as possible
+  website_url: https://www.java.com
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/995/K85ZWV2F.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation
+  detection_source: Repo Metadata
+- name: Python
+  description: A clear and powerful object-oriented programming language, comparable
+    to Perl, Ruby, Scheme, or Java.
+  website_url: https://www.python.org
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/993/pUBY5pVj.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation
+  detection_source: Repo Metadata
+- name: SQL
+  description: It is a domain-specific language used in programming
+  website_url: https://en.wikipedia.org/wiki/SQL
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/2271/default_068d33483bba6b81ee13fbd4dc7aab9780896a54.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-tpcds/src/main/resources/queries/q1.sql
+  detection_source: athena-tpcds/src/main/resources/queries/q1.sql
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation
+  detection_source: Repo Metadata
+- name: Avro
+  description: A data serialization framework
+  website_url: https://avro.apache.org/
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Serialization Frameworks
+  image_url: https://img.stackshare.io/service/4265/avro.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: Node.js
+  description: A platform built on Chrome's JavaScript runtime for easily building
+    fast, scalable network applications
+  website_url: http://nodejs.org/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/cdk_federation_infra_provisioning/app/package.json
+  detection_source: validation_testing/cdk_federation_infra_provisioning/app/package.json
+- name: Protobuf
+  description: Google's data interchange format
+  website_url: https://developers.google.com/protocol-buffers/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Serialization Frameworks
+  image_url: https://img.stackshare.io/service/4393/ma2jqJKH_400x400.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: guava
+  description: Google Core Libraries for Java 6+
+  website_url: https://github.com/google/guava
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Java Tools
+  image_url: https://img.stackshare.io/service/2970/wBjKn0ol.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-integ-test/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: Amazon S3
+  description: Store and retrieve any amount of data, at any time, from anywhere on
+    the web
+  website_url: http://aws.amazon.com/s3
+  open_source: false
+  hosted_saas: true
+  category: Data Stores
+  sub_category: Cloud Storage
+  image_url: https://img.stackshare.io/service/25/amazon-s3.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: Google Cloud Storage
+  description: Durable and highly available object storage service
+  website_url: https://cloud.google.com/products/cloud-storage/
+  open_source: false
+  hosted_saas: true
+  category: Data Stores
+  sub_category: Cloud Storage
+  image_url: https://img.stackshare.io/service/694/Cloud_Storage.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-gcs/pom.xml
+  detection_source: athena-gcs/pom.xml
+- name: HBase
+  description: The Hadoop database, a distributed, scalable, big data store
+  website_url: http://hbase.apache.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1043/HBase-Twitter3.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: Hadoop
+  description: Open-source software for reliable, scalable, distributed computing
+  website_url: http://hadoop.apache.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1044/elephant_rgb_sq.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: Kafka
+  description: Distributed, fault tolerant, high throughput pub-sub messaging system
+  website_url: http://kafka.apache.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Message Queue
+  image_url: https://img.stackshare.io/service/1063/kazUJooF_400x400.jpg
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-kafka/pom.xml
+  detection_source: athena-kafka/pom.xml
+- name: MSSQL
+  description: It is an enterprise-level database system that is very popular for
+    Windows web servers
+  website_url: https://www.microsoft.com/en-us/sql-server
+  open_source: false
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/2445/ZKsJsucq_400x400.jpg
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-datalakegen2/pom.xml
+  detection_source: athena-datalakegen2/pom.xml
+- name: Microsoft SQL Server
+  description: A relational database management system developed by Microsoft
+  website_url: http://microsoft.com/sqlserver
+  open_source: false
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1027/sql_server.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-datalakegen2/pom.xml
+  detection_source: athena-datalakegen2/pom.xml
+- name: MongoDB
+  description: The database for giant ideas
+  website_url: http://www.mongodb.com/
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1030/leaf-360x360.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-docdb/pom.xml
+  detection_source: athena-docdb/pom.xml
+- name: PostgreSQL
+  description: A powerful, open source object-relational database system
+  website_url: http://www.postgresql.org/
+  open_source: true
+  hosted_saas: false
+  category: Data Stores
+  sub_category: Databases
+  image_url: https://img.stackshare.io/service/1028/ASOhU5xJ.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-postgresql/pom.xml
+  detection_source: athena-postgresql/pom.xml
+- name: Snowflake
+  description: The data warehouse built for the cloud
+  website_url: https://www.snowflake.net/
+  open_source: false
+  hosted_saas: true
+  category: Data Stores
+  sub_category: Big Data as a Service
+  image_url: https://img.stackshare.io/service/5889/default_768181e102486f7411fe5f997dac1328d057c2cf.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-snowflake/pom.xml
+  detection_source: athena-snowflake/pom.xml
+- name: Docker
+  description: Enterprise Container Platform for High-Velocity Innovation.
+  website_url: https://www.docker.com/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Virtual Machine Platforms & Containers
+  image_url: https://img.stackshare.io/service/586/n4u37v9t_400x400.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation
+  detection_source: Repo Metadata
+- name: Dotenv
+  description: Loads environment variables from .env for Nodejs projects
+  website_url: https://github.com/motdotla/dotenv
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Server Configuration and Automation
+  image_url: https://img.stackshare.io/service/8067/default_90dcb1286af7685c68df319c764b80704df1155b.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/cdk_federation_infra_provisioning/app/package.json
+  detection_source: validation_testing/cdk_federation_infra_provisioning/app/package.json
+- name: Eclipse
+  description: IDE for Java EE Developers
+  website_url: https://www.eclipse.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Integrated Development Environment
+  image_url: https://img.stackshare.io/service/1446/8cyY6D_m.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation
+  detection_source: Repo Metadata
+- name: GitHub Actions
+  description: Automate your workflow from idea to production
+  website_url: https://github.com/features/actions
+  open_source: false
+  hosted_saas: true
+  category: Build, Test, Deploy
+  sub_category: Continuous Integration
+  image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/.github/workflows/codeql-analysis.yml
+  detection_source: ".github/workflows/codeql-analysis.yml"
+- name: JUnit
+  description: A programmer-oriented testing framework for Java
+  website_url: http://junit.org/
+  version: 4.13.1
+  license: EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/2020/874086.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-elasticsearch/pom.xml
+  detection_source: athena-elasticsearch/pom.xml
+- name: Jest
+  description: Painless JavaScript Unit Testing
+  website_url: http://facebook.github.io/jest/
+  version: 29.4.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/830/jest.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/cdk_federation_infra_provisioning/app/package.json
+  detection_source: validation_testing/cdk_federation_infra_provisioning/app/package.json
+- name: Log4j
+  description: A Java-based logging utility
+  website_url: https://logging.apache.org/log4j/2.x/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Monitoring
+  sub_category: Logging Tools
+  image_url: https://img.stackshare.io/service/2804/Coralogix-log4j-integration.jpg
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-aws-cmdb/pom.xml
+  detection_source: athena-aws-cmdb/pom.xml
+- name: Mockito
+  description: Tasty mocking framework for unit tests in Java
+  website_url: https://site.mockito.org/
+  version: 4.11.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/2021/4y634TJm_400x400.jpg
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: athena-cloudera-hive/pom.xml
+- name: SLF4J
+  description: Simple logging facade for Java
+  website_url: http://slf4j.org/
+  open_source: false
+  hosted_saas: false
+  category: Monitoring
+  sub_category: Log Management
+  image_url: https://img.stackshare.io/service/2805/05518ecaa42841e834421e9d6987b04f_400x400.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-aws-cmdb/pom.xml
+  detection_source: athena-aws-cmdb/pom.xml
+- name: TestNG
+  description: A testing framework inspired from JUnit and NUnit
+  website_url: http://testng.org/doc/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Testing Frameworks
+  image_url: https://img.stackshare.io/service/8900/no-img-open-source.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-integ-test/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: Zookeeper
+  description: Because coordinating distributed systems is a Zoo
+  website_url: http://zookeeper.apache.org/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Open Source Service Discovery
+  image_url: https://img.stackshare.io/service/1528/apache-zookeeper.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/cdk_federation_infra_provisioning/app/package.json
+  detection_source: validation_testing/cdk_federation_infra_provisioning/app/package.json
+- name: AWS Lambda
+  description: Automatically run code in response to modifications to objects in Amazon
+    S3 buckets, messages in Kinesis streams, or updates in DynamoDB
+  website_url: http://aws.amazon.com/lambda
+  open_source: false
+  hosted_saas: true
+  category: Application Hosting
+  sub_category: Serverless / Task Processing
+  image_url: https://img.stackshare.io/service/1909/aws-lambda.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-aws-cmdb/pom.xml
+  detection_source: athena-aws-cmdb/pom.xml
+- name: Dataform
+  description: A framework for managing SQL based data operations.
+  website_url: https://dataform.co/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Analytics
+  sub_category: Business Intelligence
+  image_url: https://img.stackshare.io/service/11236/Group_22__3_.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: pom.xml
+- name: Elasticsearch
+  description: Open Source, Distributed, RESTful Search Engine
+  website_url: https://www.elastic.co/products/elasticsearch
+  open_source: true
+  hosted_saas: false
+  category: Application Utilities
+  sub_category: Search as a Service
+  image_url: https://img.stackshare.io/service/841/Image_2019-05-20_at_4.58.04_PM.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-elasticsearch/pom.xml
+  detection_source: athena-elasticsearch/pom.xml
+- name: Shell
+  description: A shell is a text-based terminal, used for manipulating programs and
+    files. Shell scripts typically manage program execution.
+  website_url: https://en.wikipedia.org/wiki/Shell_script
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/4631/default_c2062d40130562bdc836c13dbca02d318205a962.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation
+  detection_source: Repo Metadata
+- name: Ubuntu
+  description: The leading OS for PC, tablet, phone and cloud
+  website_url: http://www.ubuntu.com/
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Operating Systems
+  image_url: https://img.stackshare.io/service/3511/cof_orange_hex.jpg
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/Dockerfile
+  detection_source: validation_testing/Dockerfile
+- name: com.amazonaws:aws-java-sdk-cloudformation
+  description: The AWS Java SDK for AWS CloudFormation module holds the client classes
+    that are used for communicating with AWS CloudFormation Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-integ-test/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: com.amazonaws:aws-java-sdk-cloudwatch
+  description: The AWS Java SDK for Amazon CloudWatch module holds the client classes
+    that are used for communicating with Amazon CloudWatch Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-cloudwatch-metrics/pom.xml
+  detection_source: athena-cloudwatch-metrics/pom.xml
+- name: com.amazonaws:aws-java-sdk-core
+  description: The AWS SDK for Java - Core module holds the classes that are used
+    by the individual service clients to interact with Amazon Web Services
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-elasticsearch/pom.xml
+  detection_source: athena-elasticsearch/pom.xml
+- name: com.amazonaws:aws-java-sdk-dynamodb
+  description: The AWS Java SDK for Amazon DynamoDB module holds the client classes
+    that are used for communicating with Amazon DynamoDB Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-dynamodb/pom.xml
+  detection_source: athena-dynamodb/pom.xml
+- name: com.amazonaws:aws-java-sdk-ec2
+  description: The AWS Java SDK for Amazon EC2 module holds the client classes that
+    are used for communicating with Amazon EC2 Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-aws-cmdb/pom.xml
+  detection_source: athena-aws-cmdb/pom.xml
+- name: com.amazonaws:aws-java-sdk-emr
+  description: The AWS Java SDK for Amazon EMR module holds the client classes that
+    are used for communicating with Amazon Elastic MapReduce Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-aws-cmdb/pom.xml
+  detection_source: athena-aws-cmdb/pom.xml
+- name: com.amazonaws:aws-java-sdk-kms
+  description: The AWS Java SDK for AWS KMS module holds the client classes that are
+    used for communicating with AWS Key Management Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: com.amazonaws:aws-java-sdk-lambda
+  description: The AWS Java SDK for AWS Lambda module holds the client classes that
+    are used for communicating with AWS Lambda Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: com.amazonaws:aws-java-sdk-logs
+  description: The AWS Java SDK for Amazon CloudWatch Logs module holds the client
+    classes that are used for communicating with Amazon CloudWatch Logs Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-cloudwatch/pom.xml
+  detection_source: athena-cloudwatch/pom.xml
+- name: com.amazonaws:aws-java-sdk-s3
+  description: The AWS Java SDK for Amazon S3 module holds the client classes that
+    is used for communicating with Amazon Simple Storage Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: com.amazonaws:aws-java-sdk-sts
+  description: The AWS Java SDK for AWS STS module holds the client classes that are
+    used for communicating with AWS Security Token Service
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: com.fasterxml.jackson.core:jackson-annotations
+  description: Core annotations used for value types
+  version: 2.15.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: com.fasterxml.jackson.core:jackson-core
+  description: Core Jackson processing abstractions
+  version: 2.15.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: com.fasterxml.jackson.core:jackson-databind
+  description: 'General data-binding functionality for Jackson: works on core streaming
+    API'
+  version: 2.15.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: pom.xml
+- name: com.fasterxml.jackson.dataformat:jackson-dataformat-cbor
+  description: Support for reading and writing Concise Binary Object Representation
+  version: 2.15.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: pom.xml
+- name: com.fasterxml.jackson.datatype:jackson-datatype-jsr310
+  description: Add-on module to support JSR-310
+  version: 2.15.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: pom.xml
+- name: com.fasterxml.jackson.module:jackson-module-jaxb-annotations
+  description: Support for using JAXB annotations as an alternative to "native" Jackson
+    annotations
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: com.github.spotbugs:spotbugs-annotations
+  description: Annotations the SpotBugs tool supports
+  version: 4.7.3
+  license: LGPL-2.1
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-cloudera-impala/pom.xml
+  detection_source: athena-cloudera-impala/pom.xml
+- name: com.google.cloud:google-cloud-storage
+  description: Java idiomatic client for Google Cloud Storage
+  version: 2.24.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-gcs/pom.xml
+  detection_source: athena-gcs/pom.xml
+- name: com.google.guava:guava
+  description: Guava is a suite of core and expanded libraries that include utility
+    classes
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-integ-test/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: com.google.protobuf:protobuf-java
+  description: Core Protocol Buffers library
+  license: BSD-1-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: com.microsoft.sqlserver:mssql-jdbc
+  description: Microsoft JDBC 4.1 Driver for SQL Server
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-datalakegen2/pom.xml
+  detection_source: athena-datalakegen2/pom.xml
+- name: commons-cli:commons-cli
+  description: Apache Commons CLI provides a simple API for presenting
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-integ-test/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: io.lettuce:lettuce-core
+  description: Advanced and thread-safe Java Redis client for synchronous, asynchronous,
+    and reactive usage
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-redis/pom.xml
+  detection_source: athena-redis/pom.xml
+- name: io.netty:netty-buffer
+  description: Netty project - an event-driven asynchronous network application framework
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: io.netty:netty-common
+  description: Netty project - an event-driven asynchronous network application framework
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: io.netty:netty-transport
+  description: Netty is an asynchronous event-driven network application framework
+    for rapid development of maintainable high performance protocol servers and clients
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: junit:junit
+  description: JUnit is a unit testing framework for Java
+  version: 4.13.1
+  license: EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-elasticsearch/pom.xml
+  detection_source: athena-elasticsearch/pom.xml
+- name: net.java.dev.jna:jna-platform
+  description: Java Native Access Platform
+  version: 5.13.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-gcs/pom.xml
+  detection_source: athena-gcs/pom.xml
+- name: nl.jqno.equalsverifier:equalsverifier
+  description: EqualsVerifier can be used in JUnit 4 unit tests to verify whether
+    the contract for the equals and hashCode methods is met
+  version: '3.15'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-google-bigquery/pom.xml
+  detection_source: athena-google-bigquery/pom.xml
+- name: org.antlr:ST4
+  description: StringTemplate is a java template engine for generating source code,
+    web pages, emails, or any other formatted text output
+  license: LAL-1.3
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-synapse/pom.xml
+  detection_source: athena-synapse/pom.xml
+- name: org.antlr:stringtemplate
+  description: StringTemplate is a java template engine for generating source code,
+    web pages, emails, or any other formatted text output
+  version: 4.0.2
+  license: LAL-1.3
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-jdbc/pom.xml
+  detection_source: athena-jdbc/pom.xml
+- name: org.apache.avro:avro
+  description: Avro core components
+  version: 1.11.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+  vulnerabilities:
+  - name: Apache Avro Java SDK vulnerable to Improper Input Validation
+    cve_id: CVE-2023-39410
+    cve_url: https://github.com/advisories/GHSA-rhrv-645h-fjfh
+    detected_date: Sep 30
+    severity: high
+    first_patched: 1.11.3
+- name: org.apache.commons:commons-configuration2
+  version: 2.9.0
+  open_source: false
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-neptune/pom.xml
+  detection_source: athena-neptune/pom.xml
+- name: org.apache.commons:commons-lang3
+  description: Apache Commons Lang
+  version: 3.12.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-integ-test/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: org.apache.commons:commons-text
+  description: Apache Commons Text is a library focused on algorithms working on strings
+  version: 1.10.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-jdbc/pom.xml
+  detection_source: athena-jdbc/pom.xml
+- name: org.apache.directory.server:apacheds-kerberos-codec
+  description: The Kerberos protocol encoder/decoder module
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: org.apache.hadoop:hadoop-common
+  description: Apache Hadoop Common
+  version: 3.3.6
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: org.apache.hbase:hbase-client
+  description: Client of HBase
+  version: 2.5.5
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: org.apache.hbase:hbase-common
+  description: Common functionality for HBase
+  version: 2.5.5
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: org.apache.httpcomponents:httpclient
+  description: Apache HttpComponents Client
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-elasticsearch/pom.xml
+  detection_source: athena-elasticsearch/pom.xml
+- name: org.apache.ivy:ivy
+  description: POM was created by Sonatype Nexus
+  version: 2.5.1
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-neptune/pom.xml
+  detection_source: athena-neptune/pom.xml
+  vulnerabilities:
+  - name: Apache Ivy External Entity Reference vulnerability
+    cve_id: CVE-2022-46751
+    cve_url: https://github.com/advisories/GHSA-2jc4-r94c-rp7h
+    detected_date: Aug 22
+    severity: high
+    first_patched: 2.5.2
+- name: org.apache.kafka:kafka-clients
+  version: 3.5.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-kafka/pom.xml
+  detection_source: athena-kafka/pom.xml
+- name: org.apache.logging.log4j:log4j-api
+  description: The Apache Log4j API
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-aws-cmdb/pom.xml
+  detection_source: athena-aws-cmdb/pom.xml
+- name: org.apache.logging.log4j:log4j-core
+  description: The Apache Log4j Implementation
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-aws-cmdb/pom.xml
+  detection_source: athena-aws-cmdb/pom.xml
+- name: org.apache.tinkerpop:gremlin-core
+  version: 3.6.4
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-neptune/pom.xml
+  detection_source: athena-neptune/pom.xml
+- name: org.apache.tinkerpop:gremlin-groovy
+  version: 3.6.4
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-neptune/pom.xml
+  detection_source: athena-neptune/pom.xml
+- name: org.apache.tinkerpop:tinkergraph-gremlin
+  version: 3.6.4
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-neptune/pom.xml
+  detection_source: athena-neptune/pom.xml
+- name: org.apache.zookeeper:zookeeper
+  version: 3.8.1
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+  vulnerabilities:
+  - name: Authorization Bypass Through User-Controlled Key vulnerability in Apache
+      ZooKeeper
+    cve_id: CVE-2023-44981
+    cve_url: https://github.com/advisories/GHSA-7286-pgfv-vxvh
+    detected_date: Oct 12
+    severity: critical
+    first_patched: 3.8.3
+- name: org.assertj:assertj-core
+  description: Rich and fluent assertions for testing for Java
+  version: 3.24.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: org.bouncycastle:bcprov-jdk15on
+  description: The Bouncy Castle Crypto package is a Java implementation of cryptographic
+    algorithms
+  version: '1.70'
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+  vulnerabilities:
+  - name: Bouncy Castle For Java LDAP injection vulnerability
+    cve_id: CVE-2023-33201
+    cve_url: https://github.com/advisories/GHSA-hr8g-6v94-x4m9
+    detected_date: Sep 6
+    severity: moderate
+    first_patched: 
+- name: org.codehaus.jettison:jettison
+  description: A StAX implementation for JSON
+  version: 1.5.4
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: org.eclipse.jetty:jetty-io
+  description: The Eclipse Jetty Project
+  version: 11.0.15
+  license: Apache-2.0,EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: org.eclipse.jetty:jetty-server
+  description: The core jetty server artifact
+  version: 11.0.15
+  license: Apache-2.0,EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: org.eclipse.jetty:jetty-servlet
+  description: Jetty Servlet Container
+  version: 11.0.15
+  license: Apache-2.0,EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: org.eclipse.jetty:jetty-webapp
+  description: Jetty web application support
+  version: 11.0.15
+  license: Apache-2.0,EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+- name: org.eclipse.jetty:jetty-xml
+  description: The jetty xml utilities
+  version: 11.0.15
+  license: Apache-2.0,EPL-1.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-hbase/pom.xml
+  detection_source: athena-hbase/pom.xml
+  vulnerabilities:
+  - name: Eclipse Jetty XmlParser allows arbitrary DOCTYPE declarations
+    cve_id: 
+    cve_url: https://github.com/advisories/GHSA-58qw-p7qm-5rvh
+    detected_date: Jul 11
+    severity: low
+    first_patched: 
+- name: org.elasticsearch.client:elasticsearch-rest-client
+  description: Elasticsearch subproject :client:rest
+  version: 8.5.3
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-elasticsearch/pom.xml
+  detection_source: athena-elasticsearch/pom.xml
+- name: org.elasticsearch.client:elasticsearch-rest-high-level-client
+  description: Elasticsearch subproject :client:rest-high-level
+  version: 7.10.2
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-elasticsearch/pom.xml
+  detection_source: athena-elasticsearch/pom.xml
+- name: org.hamcrest:hamcrest
+  description: Core API and libraries of hamcrest matcher framework
+  version: '2.2'
+  license: DSDP
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-dynamodb/pom.xml
+  detection_source: athena-dynamodb/pom.xml
+- name: org.junit.jupiter:junit-jupiter-api
+  description: Module "junit-jupiter-api" of JUnit 5
+  license: EPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: org.junit.jupiter:junit-jupiter-engine
+  description: Module "junit-jupiter-engine" of JUnit 5
+  license: EPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: org.junit.vintage:junit-vintage-engine
+  description: Module "junit-vintage-engine" of JUnit 5
+  license: EPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-sdk/pom.xml
+  detection_source: athena-federation-sdk/pom.xml
+- name: org.mockito:mockito-core
+  description: Mockito mock objects library core API and implementation
+  version: 4.11.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: athena-cloudera-hive/pom.xml
+- name: org.mockito:mockito-inline
+  description: Mockito preconfigured inline mock maker
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-cloudera-hive/pom.xml
+  detection_source: athena-cloudera-hive/pom.xml
+- name: org.mongodb:mongo-java-driver
+  description: The MongoDB Java driver
+  version: 3.12.14
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-docdb/pom.xml
+  detection_source: athena-docdb/pom.xml
+- name: org.postgresql:postgresql
+  description: The PostgreSQL Driver JDBC4
+  version: 42.6.0
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-postgresql/pom.xml
+  detection_source: athena-postgresql/pom.xml
+  vulnerabilities:
+  - name: org.postgresql:postgresql vulnerable to SQL Injection via line comment generation
+    cve_id: CVE-2024-1597
+    cve_url: https://github.com/advisories/GHSA-24rp-q3w6-vc56
+    detected_date: Feb 22
+    severity: critical
+    first_patched: 42.6.1
+  - name: 'Duplicate Advisory: SQL injection in pgjdbc'
+    cve_id: 
+    cve_url: https://github.com/advisories/GHSA-xfg6-62px-cxc2
+    detected_date: Feb 21
+    severity: critical
+    first_patched: 42.6.1
+- name: org.powermock:powermock-api-mockito2
+  description: PowerMock API for Mockito 2.+.
+  version: 2.0.9
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-sqlserver/pom.xml
+  detection_source: athena-sqlserver/pom.xml
+- name: org.slf4j:jcl-over-slf4j
+  description: JCL 1.2 implemented over SLF4J
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-aws-cmdb/pom.xml
+  detection_source: athena-aws-cmdb/pom.xml
+- name: org.slf4j:slf4j-api
+  description: The slf4j API
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-aws-cmdb/pom.xml
+  detection_source: athena-aws-cmdb/pom.xml
+- name: org.slf4j:slf4j-simple
+  description: SLF4J Simple binding
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-docdb/pom.xml
+  detection_source: athena-docdb/pom.xml
+- name: org.testng:testng
+  description: Testing framework for Java
+  version: 7.8.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: org.yaml:snakeyaml
+  description: YAML 1.1 parser and emitter for Java
+  version: '2.0'
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-neptune/pom.xml
+  detection_source: athena-neptune/pom.xml
+- name: software.amazon.awscdk:core
+  description: AWS Cloud Development Kit Core Library
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-integ-test/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: software.amazon.awscdk:iam
+  description: CDK routines for easily assigning correct and minimal IAM permissions
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-federation-integ-test/pom.xml
+  detection_source: athena-federation-integ-test/pom.xml
+- name: software.amazon.jsii:jsii-runtime
+  description: Java client for jsii runtime
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-elasticsearch/pom.xml
+  detection_source: athena-elasticsearch/pom.xml
+- name: "@types/jest"
+  description: TypeScript definitions for Jest
+  package_url: https://www.npmjs.com/@types/jest
+  version: 29.4.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15840/default_004658cda9b38934f2871435e9dc15608c86e8be.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/cdk_federation_infra_provisioning/app/package.json
+  detection_source: validation_testing/cdk_federation_infra_provisioning/app/package.json
+- name: "@types/node"
+  description: TypeScript definitions for Node.js
+  package_url: https://www.npmjs.com/@types/node
+  version: 18.11.18
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/cdk_federation_infra_provisioning/app/package.json
+  detection_source: validation_testing/cdk_federation_infra_provisioning/app/package.json
+- name: aws-sdk
+  description: AWS SDK for JavaScript
+  package_url: https://www.npmjs.com/aws-sdk
+  version: 2.1354.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16018/default_7a88bebb451873cc63bd99007de5bd3bb8ef85de.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-neptune/docs/aws-glue-sample-scripts/automation/package-lock.json
+  detection_source: athena-neptune/docs/aws-glue-sample-scripts/automation/package.json
+- name: fs
+  description: This package name is not currently in use, but was formerly occupied
+    by another package
+  package_url: https://www.npmjs.com/fs
+  version: 0.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16098/default_63a34654baee757196ddff2457bd1c9a0dfb7287.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-neptune/docs/aws-glue-sample-scripts/automation/package-lock.json
+  detection_source: athena-neptune/docs/aws-glue-sample-scripts/automation/package.json
+- name: source-map-support
+  description: Fixes stack traces for files with source maps
+  package_url: https://www.npmjs.com/source-map-support
+  version: 0.5.21
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16028/default_c7b204838197013798409fa2b4dafce450edc7fb.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/cdk_federation_infra_provisioning/app/package.json
+  detection_source: validation_testing/cdk_federation_infra_provisioning/app/package.json
+- name: ts-jest
+  description: A preprocessor with source maps support to help use TypeScript with
+    Jest
+  package_url: https://www.npmjs.com/ts-jest
+  version: 29.0.5
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15864/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/cdk_federation_infra_provisioning/app/package.json
+  detection_source: validation_testing/cdk_federation_infra_provisioning/app/package.json
+- name: ts-node
+  description: TypeScript execution environment and REPL for node.js
+  package_url: https://www.npmjs.com/ts-node
+  version: 10.9.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15830/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/validation_testing/cdk_federation_infra_provisioning/app/package.json
+  detection_source: validation_testing/cdk_federation_infra_provisioning/app/package.json
+- name: uuid
+  description: RFC4122
+  package_url: https://www.npmjs.com/uuid
+  version: 8.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15916/default_e0a4fb1126d7400f419f0931cf1669947a5bc552.png
+  detection_source_url: https://github.com/2lambda123/aws-athena-query-federation/blob/master/athena-neptune/docs/aws-glue-sample-scripts/automation/package-lock.json
+  detection_source: athena-neptune/docs/aws-glue-sample-scripts/automation/package.json
