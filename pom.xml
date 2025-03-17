@@ -27,7 +27,7 @@
         <fasterxml.jackson.version>2.18.3</fasterxml.jackson.version>
         <surefire.failsafe.version>3.5.2</surefire.failsafe.version>
         <log4j2Version>2.23.1</log4j2Version>
-        <apache.arrow.version>18.1.0</apache.arrow.version>
+        <apache.arrow.version>18.2.0</apache.arrow.version>
         <netty.version>4.1.110.Final</netty.version>
         <guava.version>33.4.0-jre</guava.version>
         <protobuf3.version>4.29.3</protobuf3.version>
